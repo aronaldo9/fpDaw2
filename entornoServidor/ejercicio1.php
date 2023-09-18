@@ -14,10 +14,13 @@
 
     <?php
     $image = './40623wide.jpg';
+    $op = 'mult'; // Inicializamos $op con un valor por defecto
+    
     if (!empty($_GET['opcion'])) {
         if ($_GET['opcion'] == 1) {
             echo '<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem nemo iure quod fugit. Vitae repudiandae iste, ratione atque illum sed corrupti eum dignissimos a maiores accusantium? Pariatur rem sapiente placeat?</p>';
         } else if ($_GET['opcion'] == 2) {
+            echo '<br>';
             echo '<img src="' . $image . '" width="300px" />';
         } else {
             if(!empty($_POST['num'])) {

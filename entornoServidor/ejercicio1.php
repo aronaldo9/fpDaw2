@@ -14,7 +14,7 @@
 
     <?php
     $image = './40623wide.jpg';
-    $op = 'mult'; // Inicializamos $op con un valor por defecto
+    $op = '';
     
     if (!empty($_GET['opcion'])) {
         if ($_GET['opcion'] == 1) {

@@ -5,7 +5,20 @@
 
 .titulo {
     background-color: black;
-    width: 300px;
     color: white;
-    float:left;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding: 5px;
+    margin: 5px;
+    
+}
+
+form {
+    padding: 10px;
+}
+
+input {
+    margin: 5px;
 }

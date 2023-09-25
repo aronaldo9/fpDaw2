@@ -31,12 +31,12 @@
                 $año=$_POST['año'];
                 $poster=$_POST['poster'];
 
+                // var_dump($_POST);
+
                 $q="INSERT into peliculas VALUES(NULL, '".$titulo."', ".$año.", '".$poster."')";
                 $result = $bd->query($q);
                 
-            }
-
-                   
+            }               
             
 
             $q = "SELECT * FROM peliculas;"; // WHERE state = 1";
@@ -66,12 +66,8 @@
                     echo '<a href=pelis.php?borrar='.$datos['id'].'>Borrar</a>';
                 }
             }
-
             
-        ?>
-            
-
-    
+        ?>   
 
 </body>
 

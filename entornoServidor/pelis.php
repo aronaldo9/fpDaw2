@@ -14,15 +14,15 @@
 
         session_start();
 
-            require_once("db.php");
+            require_once("db.php");            
 
             $bd = Conectar::conexion(); // con :: llamamos a un método estático
 
             // var_dump($_POST);
 
             if(!empty($_GET['borrar'])){
-                $q="DELETE from peliculas WHERE id=".$_GET['borrar'];
-                // $q="UPDATE peliculas SET state=0 WHERE id=".$_GET['borrar'];
+                // $q="DELETE from peliculas WHERE id=".$_GET['borrar'];
+                $q="UPDATE peliculas SET state=0 WHERE id=".$_GET['borrar'];
                 $bd->query($q);
             }  
 
@@ -31,15 +31,15 @@
                 $año=$_POST['año'];
                 $poster=$_POST['poster'];
 
-                // var_dump($_POST);
+                 var_dump($_POST);
 
-                $q="INSERT into peliculas VALUES(NULL, '".$titulo."', ".$año.", '".$poster."')";
+                $q="INSERT into peliculas VALUES(NULL, '".$titulo."', ".$año.", '".$poster."',1)";
                 $result = $bd->query($q);
                 
             }               
             
 
-            $q = "SELECT * FROM peliculas;"; // WHERE state = 1";
+            $q = "SELECT * FROM peliculas WHERE state = 1";
             $result = $bd->query($q); // Es un objeto que contiene entre muchas cosas un array con información
             
 
@@ -66,6 +66,7 @@
                     echo '<a href=pelis.php?borrar='.$datos['id'].'>Borrar</a>';
                 }
             }
+
             
         ?>   
 

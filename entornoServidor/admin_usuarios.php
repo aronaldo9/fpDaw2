@@ -19,8 +19,23 @@
     $bd = Conectar::conexion();
     $q = "SELECT * from users";
     $result=$bd->query($q);
-    while($datos=$result->fetch_assoc()){
-        $users[]=$datos;
+
+    if ($result->num_rows > 0) {
+        echo "<ul>";
+
+        while ($datos = $result->fetch_assoc()) {
+            $users[] = $datos; // Guardar datos en el array users
+        }
+
+        // Iterar sobre el array de usuarios y mostrar la información
+        foreach ($users as $user) {
+            echo "<li>ID: " . $user['id'] . ", Nombre: " . $user['name'] . ", Rol: " . $user['rol'] . "</li>";
+            echo '<img src="' ."imagenes/". $user['imagen'] . '" width="300px" />';
+        }
+
+        echo "</ul>";
+    } else {
+        echo "No se encontraron usuarios.";
     }
     // añadir botón de bannear
 

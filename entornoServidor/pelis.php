@@ -10,7 +10,6 @@
 </head>
 
 <body>
-    <div class="titulo">
         <?php
 
         session_start();
@@ -21,6 +20,12 @@
 
             // var_dump($_POST);
 
+            if(!empty($_GET['borrar'])){
+                $q="DELETE from peliculas WHERE id=".$_GET['borrar'];
+                // $q="UPDATE peliculas SET state=0 WHERE id=".$_GET['borrar'];
+                $bd->query($q);
+            }  
+
             if(!empty($_POST['titulo'])){
                 $titulo=$_POST['titulo'];
                 $año=$_POST['año'];
@@ -28,49 +33,43 @@
 
                 $q="INSERT into peliculas VALUES(NULL, '".$titulo."', ".$año.", '".$poster."')";
                 $result = $bd->query($q);
-                header("Location: ".$_SERVER['PHP_SELF']);
-                exit;
-
-            }
-
-            if(isset($_POST['borrar'])) {
-                if(!empty($_POST['id_borrar'])) {
-                    $id = $_POST['id_borrar'];
-            
-                    $q2 = "DELETE FROM peliculas WHERE id = $id";
-                    $result = $bd->query($q2);
-                    header("Location: ".$_SERVER['PHP_SELF']);
-                    exit;
-                }
-            }           
-            
-
-            $q = "SELECT * FROM peliculas";
-            $result = $bd->query($q); // Es un objeto que contiene entre muchas cosas un array con información
-            while ($datos = $result->fetch_assoc()) { // podríamos usar fetch_array para sacar la posición
-                echo '<img src="' ."imagenes/". $datos['poster'] . '" width="300px" />';
-                echo "Título: ".$datos['titulo'] . "<br>";
-                echo "Año: ".$datos['año']."<br>";
-                echo '<form method="POST" action=""><input type="hidden" name="id_borrar" value="'.$datos['id'].'"><input type="submit" name="borrar" value="Borrar"></form>';
                 
             }
 
-        
-        ?>
-    </div>
-        <?php
+                   
+            
+
+            $q = "SELECT * FROM peliculas;"; // WHERE state = 1";
+            $result = $bd->query($q); // Es un objeto que contiene entre muchas cosas un array con información
+            
+
+
             if(!empty($_SESSION['loged'])){
                 echo "Hola ".$_SESSION['username']."<br>"."<a href='usuariosNacho.php?logout=1'>Salir</a>"."<br>";
             } else {
                 echo '<a href="usuariosNacho.php">Iniciar Sesión</a>'."<br>";
             }
+
+            echo '<form method="POST" action="">
+                Título: <input type="text" name="titulo" placeholder="titulo" required/><br>
+                Año: <input type="number" name="año" placeholder="año" required/><br>
+                Poster: <input type="text" name="poster" placeholder="url de la imagen" required/>
+                <input type="submit" name="enviar" value="enviar" placeholder="Enviar">
+            </form>';
+
+            while ($datos = $result->fetch_assoc()) { // podríamos usar fetch_array para sacar la posición
+                echo '<img src="' ."imagenes/". $datos['poster'] . '" width="300px" />';
+                echo "Título: ".$datos['titulo'] . "<br>";
+                echo "Año: ".$datos['año']."<br>";                 
+                
+                if(!empty($_SESSION['loged'])){
+                    echo '<a href=pelis.php?borrar='.$datos['id'].'>Borrar</a>';
+                }
+            }
+
+            
         ?>
-        <form method="POST" action="">
-        Título: <input type="text" name="titulo" placeholder="titulo" required/><br>
-        Año: <input type="number" name="año" placeholder="año" required/><br>
-        Poster: <input type="text" name="poster" placeholder="url de la imagen" required/>
-        <input type="submit" name="enviar" value="enviar" placeholder="Enviar">
-        </form>
+            
 
     
 

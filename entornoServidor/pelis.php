@@ -13,6 +13,8 @@
     <div class="titulo">
         <?php
 
+        session_start();
+
             require_once("db.php");
 
             $bd = Conectar::conexion(); // con :: llamamos a un método estático
@@ -26,8 +28,21 @@
 
                 $q="INSERT into peliculas VALUES(NULL, '".$titulo."', ".$año.", '".$poster."')";
                 $result = $bd->query($q);
+                header("Location: ".$_SERVER['PHP_SELF']);
+                exit;
 
             }
+
+            if(isset($_POST['borrar'])) {
+                if(!empty($_POST['id_borrar'])) {
+                    $id = $_POST['id_borrar'];
+            
+                    $q2 = "DELETE FROM peliculas WHERE id = $id";
+                    $result = $bd->query($q2);
+                    header("Location: ".$_SERVER['PHP_SELF']);
+                    exit;
+                }
+            }           
             
 
             $q = "SELECT * FROM peliculas";
@@ -36,11 +51,20 @@
                 echo '<img src="' ."imagenes/". $datos['poster'] . '" width="300px" />';
                 echo "Título: ".$datos['titulo'] . "<br>";
                 echo "Año: ".$datos['año']."<br>";
+                echo '<form method="POST" action=""><input type="hidden" name="id_borrar" value="'.$datos['id'].'"><input type="submit" name="borrar" value="Borrar"></form>';
                 
             }
+
+        
         ?>
     </div>
-
+        <?php
+            if(!empty($_SESSION['loged'])){
+                echo "Hola ".$_SESSION['username']."<br>"."<a href='usuariosNacho.php?logout=1'>Salir</a>"."<br>";
+            } else {
+                echo '<a href="usuariosNacho.php">Iniciar Sesión</a>'."<br>";
+            }
+        ?>
         <form method="POST" action="">
         Título: <input type="text" name="titulo" placeholder="titulo" required/><br>
         Año: <input type="number" name="año" placeholder="año" required/><br>

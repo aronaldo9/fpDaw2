@@ -26,14 +26,21 @@
                 $bd->query($q);
             }  
 
+            if(!empty($_GET['like'])){                
+                $q="UPDATE peliculas SET likes=likes+1 WHERE id=".$_GET['like'];
+                $bd->query($q);
+                header("location:pelis.php");
+            }
+
             if(!empty($_POST['titulo'])){
                 $titulo=$_POST['titulo'];
                 $año=$_POST['año'];
                 $poster=$_POST['poster'];
+                $likes=$_POST['likes'];
 
                  var_dump($_POST);
 
-                $q="INSERT into peliculas VALUES(NULL, '".$titulo."', ".$año.", '".$poster."',1)";
+                $q="INSERT into peliculas VALUES(NULL, '".$titulo."', ".$año.", '".$poster."',1,0)";
                 $result = $bd->query($q);
                 
             }               
@@ -45,9 +52,9 @@
 
 
             if(!empty($_SESSION['loged'])){
-                echo "Hola ".$_SESSION['username']."<br>"."<a href='usuariosNacho.php?logout=1'>Salir</a>"."<br>";
+                echo "Hola ".$_SESSION['username']."<br>"."<a href='login.php?logout=1'>Salir</a>"."<br>";
             } else {
-                echo '<a href="usuariosNacho.php">Iniciar Sesión</a>'."<br>";
+                echo '<a href="login.php">Iniciar Sesión</a>'."<br>";
             }
 
             echo '<form method="POST" action="">
@@ -60,13 +67,15 @@
             while ($datos = $result->fetch_assoc()) { // podríamos usar fetch_array para sacar la posición
                 echo '<img src="' ."imagenes/". $datos['poster'] . '" width="300px" />';
                 echo "Título: ".$datos['titulo'] . "<br>";
-                echo "Año: ".$datos['año']."<br>";                 
+                echo "Año: ".$datos['año']."<br>"; 
+                echo "Likes: ".$datos['likes']."<br>";                
                 
                 if(!empty($_SESSION['loged'])){
                     echo '<a href=pelis.php?borrar='.$datos['id'].'>Borrar</a>';
+                    echo '<br>';
+                    echo '<a href=pelis.php?like='.$datos['id'].'>Like</a>';                                      
                 }
             }
-
             
         ?>   
 

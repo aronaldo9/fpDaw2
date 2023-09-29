@@ -38,7 +38,7 @@
                 $poster=$_POST['poster'];
                 $likes=$_POST['likes'];
 
-                 var_dump($_POST);
+                 // var_dump($_POST);
 
                 $q="INSERT into peliculas VALUES(NULL, '".$titulo."', ".$año.", '".$poster."',1,0)";
                 $result = $bd->query($q);
@@ -73,7 +73,10 @@
                 if(!empty($_SESSION['loged'])){
                     echo '<a href=pelis.php?borrar='.$datos['id'].'>Borrar</a>';
                     echo '<br>';
-                    echo '<a href=pelis.php?like='.$datos['id'].'>Like</a>';                                      
+                    echo '<form method="GET" action="">
+                    <input type="hidden" name="like" value="'.$datos['id'].'">
+                    <input type="submit" name="like_btn" value="LIKE">
+                    </form>';                                      
                 }
             }
             

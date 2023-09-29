@@ -29,6 +29,7 @@
             if(!empty($_GET['like'])){                
                 $q="UPDATE peliculas SET likes=likes+1 WHERE id=".$_GET['like'];
                 $bd->query($q);
+                $q="INSERT into pelisvotos VALUES (".$_SESSION['id']."idUsuario, idPelicula"
                 header("location:pelis.php");
             }
 
@@ -70,9 +71,12 @@
                 echo "Año: ".$datos['año']."<br>"; 
                 echo "Likes: ".$datos['likes']."<br>";                
                 
-                if(!empty($_SESSION['loged'])){
+                if(!empty($_SESSION['rol']>1)){
                     echo '<a href=pelis.php?borrar='.$datos['id'].'>Borrar</a>';
                     echo '<br>';
+                    
+                }
+                if(!empty($_SESSION['rol']>0)) {
                     echo '<form method="GET" action="">
                     <input type="hidden" name="like" value="'.$datos['id'].'">
                     <input type="submit" name="like_btn" value="LIKE">

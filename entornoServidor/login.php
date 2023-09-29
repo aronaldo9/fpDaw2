@@ -32,6 +32,7 @@
                 $_SESSION['loged']=true; // creamos la sesión para indicar que está logueado
                 $_SESSION['username']=$datos['name'];
                 $_SESSION['rol']=$datos['rol'];
+                $_SESSION['id']=$datos['id'];
                 header('location:pelis.php');
             } else {
                 $info = "Contraseña inválida";

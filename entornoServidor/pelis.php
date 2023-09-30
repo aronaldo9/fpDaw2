@@ -29,7 +29,7 @@
             if(!empty($_GET['like'])){                
                 $q="UPDATE peliculas SET likes=likes+1 WHERE id=".$_GET['like'];
                 $bd->query($q);
-                $q="INSERT into pelisvotos VALUES (".$_SESSION['id']."idUsuario, idPelicula"
+                // $q="INSERT into pelisvotos VALUES (".$_SESSION['id']."idUsuario, idPelicula"
                 header("location:pelis.php");
             }
 
@@ -54,6 +54,7 @@
 
             if(!empty($_SESSION['loged'])){
                 echo "Hola ".$_SESSION['username']."<br>"."<a href='login.php?logout=1'>Salir</a>"."<br>";
+                echo "Hola ".$_SESSION['username']."<br>"."<a href='follow.php?logout=1'>Followers</a>"."<br>";
             } else {
                 echo '<a href="login.php">Iniciar Sesión</a>'."<br>";
             }

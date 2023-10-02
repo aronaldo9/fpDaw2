@@ -13,7 +13,7 @@ class PublicacionRepository{
         while($datos=$result->fetch_assoc()){
             $pubs[] = new Publicacion($datos);
         }
-        // cosntruir el modelo con un array de publicaciones
+        // construir el modelo con un array de publicaciones
 
         // devolver el array
         return $pubs;

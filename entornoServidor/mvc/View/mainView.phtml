@@ -9,11 +9,23 @@
     <h1>Publicaciones</h1>
 
     <?php
+
+    if(!empty(S_SESSION['user'])) {
+        echo "Has iniciado sesión";
+    }
+
     foreach($pubs as $pub){        
-        echo $pub->getTitle()."<br>";
+        echo $pub->getTitle()."<br><br>";
         echo $pub->getText()."<br>";
     }
     ?>
+
+    <br><br>
+    <form method="POST" action="index.php">
+            Nombre: <input type="text" name="username" placeholder="Nombre" required/><br>
+            Contraseña: <input type="password" name="password" placeholder="Contraseña" required/><br>
+            <input type="submit" name="login" value="Entrar" placeholder="Entrar">
+    </form>
 
 </body>
 </html>

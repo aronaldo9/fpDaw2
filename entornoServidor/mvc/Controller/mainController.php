@@ -8,9 +8,16 @@
 
 
 require_once('Model/Publicacion.php');
+require_once('Model/User.php');
 require_once('Model/PublicacionRepository.php');
+session_start();
 
 $pubs = PublicacionRepository::getPublicaciones();
+
+if(!empty($_POST['login'])){
+    // llamar a un método que valide
+    $_SESSION['user'] = UserRepository::validar($_POST['username'],$_POST['password']);
+}
 
 // carga la vista 
 include("View/mainView.phtml");

@@ -1,45 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuarios</title>
-</head>
-<body>
-    <?php
-    session_start();
-    require_once("db.php");
+<html>
+    <body>
+        <?php
+            session_start();
 
-    // validar que el usuario es admin
-    if($_SESSION['rol']<2){
-        header('location:pelis.php');
-    }
-    
-    // mostrar lista usuarios
-    $bd = Conectar::conexion();
-    $q = "SELECT * from users";
-    $result=$bd->query($q);
+            require_once("db.php");
 
-    if ($result->num_rows > 0) {
-        echo "<ul>";
+            $bd = Conectar::conexion();
 
-        while ($datos = $result->fetch_assoc()) {
-            $users[] = $datos; // Guardar datos en el array users
-        }
+            $q = "SELECT * FROM users";
+            $result = $bd->query($q);
 
-        // Iterar sobre el array de usuarios y mostrar la información
-        foreach ($users as $user) {
-            echo "<li>ID: " . $user['id'] . ", Nombre: " . $user['name'] . ", Rol: " . $user['rol'] . "</li>";
-            echo '<img src="' ."imagenes/". $user['imagen'] . '" width="300px" />';
-        }
+            if(!empty($_GET['ban'])){
+                $q2 = "UPDATE users SET deleted=1 WHERE id=".$_GET['ban'];
+                $result2 = $bd->query($q2);
+                header("Location:admin_usuarios.php");
+            }
 
-        echo "</ul>";
-    } else {
-        echo "No se encontraron usuarios.";
-    }
-    // añadir botón de bannear
+            if(!empty($_GET['unban'])){
+                $q3 = "UPDATE users SET deleted=0 WHERE id=".$_GET['unban'];
+                $result3 = $bd->query($q3);
+                header("Location:admin_usuarios.php");
+            }
 
-    // next: desbanear
-    ?>
-</body>
+            if(!empty($_SESSION['loged']) && $_SESSION['rol'] == 2){
+                while($datos=$result->fetch_assoc()){
+                    if($datos['deleted'] == 0){
+                        echo "<b>id:</b><br>";
+                        echo ($datos['id'])."<br>";
+                        echo "<b>Nombre:</b><br>";
+                        echo ($datos['name'])."<br>";
+                        echo "<a href=admin_usuarios.php?ban=".$datos['id'].">Banear</a>";
+                        echo "<br>";
+                        echo "<br>";
+                    }else{
+                        echo "<b>idUsuario:</b><br>";
+                        echo ($datos['id'])."<br>";
+                        echo "<b>Nombre:</b><br>";
+                        echo ($datos['name'])."<br>";
+                        echo "<a href=admin_usuarios.php?unban=".$datos['id'].">Desbanear</a>";
+                        echo "<br>";
+                        echo "<br>";
+                    }
+                }
+            }else{
+                echo "<h1>Inicia sesion para poder ver el contenido de la pagina</h1>";
+                echo "<h3><a href=login.php>Iniciar sesion</a></h3>";
+            }
+        ?>
+    </body>
 </html>

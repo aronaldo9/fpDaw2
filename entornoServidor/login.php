@@ -27,16 +27,19 @@
         // if($result->num_rows)
         // forma2
         if($datos=$result->fetch_assoc()){
-            if($datos['password'] == md5($_POST['password'])){  // md5 es la contraseña encriptada
-                $info = "OK";
-                $_SESSION['loged']=true; // creamos la sesión para indicar que está logueado
-                $_SESSION['username']=$datos['name'];
-                $_SESSION['rol']=$datos['rol'];
-                $_SESSION['id']=$datos['id'];
-                header('location:pelis.php');
-            } else {
-                $info = "Contraseña inválida";
-            }
+            if($datos['deleted'] == 0){
+                if($datos['password'] == md5($_POST['password'])){  // md5 es la contraseña encriptada
+                    $info = "OK";
+                    $_SESSION['loged']=true; // creamos la sesión para indicar que está logueado
+                    $_SESSION['username']=$datos['name'];
+                    $_SESSION['rol']=$datos['rol'];
+                    $_SESSION['id']=$datos['id'];
+                    header('location:pelis.php');
+                } else {
+                    $info = "Contraseña inválida";
+                }
+            }else header("Location:login.php?logout=1");
+            
         } else {
             $info = "Usuario no encontrado";
         }
@@ -45,7 +48,7 @@
 ?>
 
 
-    <form method="POST" action="">
+    <form method="POST" action="login.php">
             Nombre: <input type="text" name="name" placeholder="Nombre" required/><br>
             Contraseña: <input type="password" name="password" placeholder="Contraseña" required/><br>
             <input type="submit" name="login" value="Entrar" placeholder="Entrar">

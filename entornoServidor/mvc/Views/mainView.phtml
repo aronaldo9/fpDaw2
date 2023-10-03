@@ -12,6 +12,8 @@
 
     if(!empty($_SESSION['user'])) {
         echo "Has iniciado sesión";
+    } else{
+        echo "El usuario no existe";
     }
 
     foreach($pubs as $pub){        

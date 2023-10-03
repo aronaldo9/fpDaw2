@@ -10,6 +10,8 @@
 require_once('Model/Publicacion.php');
 require_once('Model/User.php');
 require_once('Model/PublicacionRepository.php');
+require_once('Model/UserRepository.php');
+
 session_start();
 
 $pubs = PublicacionRepository::getPublicaciones();

@@ -12,14 +12,20 @@
 
     if(!empty($_SESSION['user'])) {
         echo "Has iniciado sesión";
+        echo "<br><br>";
+        echo "<a href='index.php?newPub=1'>Añadir publicación</a> <br>";
+        
     } else{
         echo "El usuario no existe";
+        echo "<br><br>";
     }
+    
 
     foreach($pubs as $pub){        
         echo $pub->getTitle()."<br><br>";
         echo $pub->getText()."<br>";
     }
+
     ?>
 
     <br><br>

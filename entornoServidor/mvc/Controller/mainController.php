@@ -14,6 +14,11 @@ require_once('Model/UserRepository.php');
 
 session_start();
 
+if($_GET['newPub'] == 1) {
+    include("View/newPubView.phtml");
+    die;
+}
+
 $pubs = PublicacionRepository::getPublicaciones();
 
 if(!empty($_POST['login'])){
@@ -21,9 +26,9 @@ if(!empty($_POST['login'])){
     $_SESSION['user'] = UserRepository::validar($_POST['username'],$_POST['password']);
 }
 
+
 // carga la vista 
 include("View/mainView.phtml");
-
 
 
 ?>

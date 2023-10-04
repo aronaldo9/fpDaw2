@@ -14,7 +14,7 @@ require_once('Model/UserRepository.php');
 
 session_start();
 
-if($_GET['newPub'] == 1) {
+if(!empty($_GET['newPub'])) {
     include("View/newPubView.phtml");
     die;
 }

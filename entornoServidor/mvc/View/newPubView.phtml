@@ -8,9 +8,11 @@
 <body>
     <h1>Añadir Publicaciones</h1>
 
-    <form method="POST" action="index.php">
+    <!-- enctype es obligatorio cuando estamos enviando archivos -->
+    <form action="index.php" method="POST" enctype="multipart/form-data" > 
             Título: <input type="text" name="title" placeholder="Título" required/><br>
-            Texto: <input type="text" name="text" placeholder="Texto" required/><br>
+            Texto: <textarea name="text" required></textarea><br>
+            <input type="file" name="img">
             <input type="submit" name="newPub" value="Añadir" placeholder="Añadir">
     </form>
 </body>

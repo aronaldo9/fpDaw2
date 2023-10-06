@@ -3,6 +3,7 @@ class Publicacion {
     // titulo, texto,fecha
     private $title = "";
     private $text = "";
+    private $img = "";
     private $date = NULL; // new DateTime
     private $id;
 
@@ -13,6 +14,7 @@ class Publicacion {
         $this->text = $datos['text'];
         $this->date = $datos['pubdate'];
         $this->id = $datos['id'];
+        $this->img = $datos['img'];
     }
     
 
@@ -26,6 +28,10 @@ class Publicacion {
 
     public function setText($t) {
         $this->text=$t;
+    }
+
+    public function getImage(){
+        return $this->img;
     }
 }
 

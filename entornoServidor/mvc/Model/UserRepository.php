@@ -11,7 +11,7 @@ class UserRepository{
 
         $result=$bd->query($q);
         while($datos=$result->fetch_assoc()){
-            $pubs[] = new Publicacion($datos);
+            $pubs[] = new User($datos);
         }
         // construir el modelo con un array de publicaciones
 

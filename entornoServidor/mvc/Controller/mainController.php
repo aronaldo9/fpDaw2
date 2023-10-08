@@ -11,6 +11,8 @@ require_once('Model/Publicacion.php');
 require_once('Model/User.php');
 require_once('Model/PublicacionRepository.php');
 require_once('Model/UserRepository.php');
+require_once('Model/Comment.php');
+require_once('Model/CommentRepository.php');
 
 session_start();
 

@@ -11,7 +11,8 @@
     <?php
 
     if(!empty($_SESSION['user']) && $_SESSION['user']->getRol()>1) {
-        echo "<a href='index.php?newPub=1'>Añadir publicación</a> <br>";
+        echo "<a href='index.php?newPub=1'>Añadir publicación</a>";
+        echo "<br><br>";
         
     } else{
         echo "El usuario no existe";
@@ -23,6 +24,17 @@
         echo '<img src="public/img/' .$pub->getImage().'" width="100px"/>';      
         echo $pub->getTitle()."<br><br>";
         echo $pub->getText()."<br>";
+
+        foreach($pub->getComments() as $comment) {
+            echo $comment->getUser()->getUsername()." ha dicho: ".$comment->getComment();
+        }
+
+        echo '<form method="POST" action="index.php">
+            <textarea name="comment" rows="5" cols="40" placeholder="Escribe comentario"></textarea><br>
+            <input type="submit" value="Publicar">
+            </form>';
+        echo '<br>';
+
     }
 
     ?>

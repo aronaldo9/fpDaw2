@@ -5,7 +5,7 @@ class Publicacion {
     private $text = "";
     private $img = "";
     private $date = NULL; // new DateTime
-    private $id;
+    private $comments;
 
 
     public function __construct($datos)
@@ -13,8 +13,8 @@ class Publicacion {
         $this->title = $datos['title'];
         $this->text = $datos['text'];
         $this->date = $datos['pubdate'];
-        $this->id = $datos['id'];
         $this->img = $datos['img'];
+        $this->comments = CommentRepository::getCommentsByPubId($datos['id']);
     }
     
 
@@ -33,6 +33,8 @@ class Publicacion {
     public function getImage(){
         return $this->img;
     }
+
+
 }
 
 

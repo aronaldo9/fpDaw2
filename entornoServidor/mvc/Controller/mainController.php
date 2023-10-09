@@ -26,14 +26,10 @@ if(!empty($_GET['c'])){
     if($_GET['c']=="comment"){
         require_once("Controller/commentController.php");
     }
+    if($_GET['c']=="panel"){
+        require_once("Controller/adminPanelController.php");
+    }
 }
-
-
-
-
-
-
-
 
 
 $pubs = PublicacionRepository::getPublicaciones();

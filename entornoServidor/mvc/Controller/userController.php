@@ -5,4 +5,9 @@ if(!empty($_POST['login'])){
     $_SESSION['user'] = UserRepository::validar($_POST['username'],$_POST['password']);
 }
 
+if(!empty($_GET['logout'])){
+    session_destroy();
+    session_start();
+}
+
 ?>

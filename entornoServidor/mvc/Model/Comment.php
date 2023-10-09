@@ -14,7 +14,7 @@ class Comment {
         $this->comment = $datos['comment'];
         $this->commentDate = $datos['commentDate'];
 
-        $this->user_id = UserRepository::getUserById($datos['id']);
+        $this->user_id = UserRepository::getUserById($datos['user_id']);
     }
 
     
@@ -36,6 +36,11 @@ class Comment {
     public function getCommentDate()
     {
         return $this->commentDate;
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 }
 

@@ -5,9 +5,9 @@ class CommentRepository {
     public static function getCommentsByPubId($id) {
         $bd=Conectar::conexion();
         $comments=[];
-        $q="SELECT * FROM comments WHERE id_pub='".$id."'";
+        $q="SELECT * FROM comments WHERE pub_id='".$id."'";
         $result=$bd->query($q);
-        if($datos=$result->fetch_assoc()){
+        while($datos=$result->fetch_assoc()){
             $comments[] = new Comment($datos);
         }
         return $comments;
@@ -26,10 +26,9 @@ class CommentRepository {
     // }
 
 
-    public static function addComments() {
+    public static function newComment($datos) {
         $bd=Conectar::conexion();
-
-        $q = "INSERT INTO comments VALUES (" . $_SESSION['user']->getId() . ", " . $_POST['publicacion']->getId() . ", '" . $_POST['text'] . "', NOW())";
+        $q = "INSERT INTO comments VALUES (NULL, " .$_SESSION['user']->getId().", ".$datos['pub_id'].", '". $datos['comment']."', NOW())";
         $bd->query($q);
 
     }

@@ -38,7 +38,7 @@ class UserRepository{
 
     public static function getUserById($id) {
         $bd=Conectar::conexion();
-        $q="SELECT * FROM users WHERE id='".$id."'";
+        $q="SELECT * FROM users WHERE id_user='".$id."'";
         $result=$bd->query($q);
         if($datos=$result->fetch_assoc()){
             return new User($datos);

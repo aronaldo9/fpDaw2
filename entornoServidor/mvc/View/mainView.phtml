@@ -11,7 +11,7 @@
     <?php
 
     if(!empty($_SESSION['user']) && $_SESSION['user']->getRol()>1) {
-        echo "<a href='index.php?newPub=1'>Añadir publicación</a>";
+        echo "<a href='index.php?c=pub&newPub=1'>Añadir publicación</a>";
         echo "<br><br>";
         
     } else{
@@ -26,12 +26,14 @@
         echo $pub->getText()."<br>";
 
         foreach($pub->getComments() as $comment) {
-            echo $comment->getUser()->getUsername()." ha dicho: ".$comment->getComment();
+            echo $comment->getUser_id()->getUsername()." ha dicho: ".$comment->getComment();
+            echo '<br>';
         }
 
-        echo '<form method="POST" action="index.php">
+        echo '<form method="POST" action="index.php?c=comment">
             <textarea name="comment" rows="5" cols="40" placeholder="Escribe comentario"></textarea><br>
-            <input type="submit" value="Publicar">
+            <input type="hidden" name="pub_id" value="'.$pub->getId().'">
+            <input type="submit" name="newComment" value="Publicar">
             </form>';
         echo '<br>';
 
@@ -40,7 +42,7 @@
     ?>
 
     <br><br>
-    <form method="POST" action="index.php">
+    <form method="POST" action="index.php?c=user">
             Nombre: <input type="text" name="username" placeholder="Nombre" required/><br>
             Contraseña: <input type="password" name="password" placeholder="Contraseña" required/><br>
             <input type="submit" name="login" value="Entrar" placeholder="Entrar">

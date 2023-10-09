@@ -1,6 +1,7 @@
 <?php
 class Publicacion {
     // titulo, texto,fecha
+    private $id;
     private $title = "";
     private $text = "";
     private $img = "";
@@ -10,6 +11,7 @@ class Publicacion {
 
     public function __construct($datos)
     {
+        $this->id = $datos['id'];
         $this->title = $datos['title'];
         $this->text = $datos['text'];
         $this->date = $datos['pubdate'];
@@ -26,6 +28,10 @@ class Publicacion {
         return $this->title;
     }
 
+    public function getComments() {
+        return $this->comments;
+    }
+
     public function setText($t) {
         $this->text=$t;
     }
@@ -34,7 +40,10 @@ class Publicacion {
         return $this->img;
     }
 
-
+    public function getId()
+    {
+        return $this->id;
+    }
 }
 
 

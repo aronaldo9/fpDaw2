@@ -16,23 +16,27 @@ require_once('Model/CommentRepository.php');
 
 session_start();
 
-if(!empty($_GET['newPub'])) {
-    include("View/newPubView.phtml");
-    die;
+if(!empty($_GET['c'])){
+    if($_GET['c']=="user"){
+        require_once("Controller/userController.php");
+    }
+    if($_GET['c']=="pub"){
+        require_once("Controller/pubController.php");
+    }
+    if($_GET['c']=="comment"){
+        require_once("Controller/commentController.php");
+    }
 }
 
-if (!empty($_POST['newPub'])) {
-    PublicacionRepository::publicar($_POST,$_FILES);
-}
+
+
+
+
+
+
+
 
 $pubs = PublicacionRepository::getPublicaciones();
-
-if(!empty($_POST['login'])){
-    // llamar a un método que valide
-    $_SESSION['user'] = UserRepository::validar($_POST['username'],$_POST['password']);
-}
-
-
 // carga la vista 
 include("View/mainView.phtml");
 

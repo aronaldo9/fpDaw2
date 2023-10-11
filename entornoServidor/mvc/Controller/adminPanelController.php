@@ -5,4 +5,10 @@ if(!empty($_GET['nPanel'])) {
     die;
 }
 
+if(!empty($_GET['editPub'])){
+    $pubs = PublicacionRepository::getPublicaciones();
+    include("View/editPubView.phtml");    
+    die;
+}
+
 ?>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Publicaciones</title>
+</head>
+<body>
+    <h1>Editar Publicación</h1>
+
+    <?php
+
+        foreach($pubs as $pub){      
+            echo $pub->getTitle()."<br><br>";
+            echo $pub->getText()."<br>";
+        }
+
+    ?>
+    
+    <!-- <form action="index.php?c=pub" method="POST" enctype="multipart/form-data" > 
+            Título: <input type="text" name="title" placeholder="Título" required/><br>
+            Texto: <textarea name="text" required></textarea><br>
+            <input type="file" name="img">
+            <input type="submit" name="editPub" value="Editar" placeholder="Editar">
+    </form> -->
+</body>
+</html>

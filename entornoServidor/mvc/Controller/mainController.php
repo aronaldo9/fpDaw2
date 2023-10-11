@@ -26,7 +26,7 @@ if(!empty($_GET['c'])){
     if($_GET['c']=="comment"){
         require_once("Controller/commentController.php");
     }
-    if($_GET['c']=="panel"){
+    if($_GET['c']=="adminPanel"){
         require_once("Controller/adminPanelController.php");
     }
 }

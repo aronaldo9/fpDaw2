@@ -9,19 +9,22 @@
     <h1>Editar Publicación</h1>
 
     <?php
+        foreach($pubs as $pub) { 
+            echo '<img src="public/img/' . $pub->getImage() . '" width="200px"/><br>'; 
+            // echo $pub->getTitle() . "<br><br>";
+            // echo $pub->getText() . "<br><br>";
 
-        foreach($pubs as $pub){      
-            echo $pub->getTitle()."<br><br>";
-            echo $pub->getText()."<br>";
+            // Mostrar formulario de edición con los datos actuales de la publicación
+            echo '<form action="index.php?c=adminPanel&editPub=1" method="POST" enctype="multipart/form-data">
+                Título: <input type="text" name="editedTitle" value="' . $pub->getTitle() . '" required/><br><br>
+                Texto: <textarea name="editedText" required>' . $pub->getText() . '</textarea><br><br>
+                <input type="hidden" name="pubId" value="' . $pub->getId() . '">
+                <input type="submit" name="editPub" value="Editar">
+            </form>';
+            echo '<br>';
+            echo '<hr>';
         }
-
     ?>
-    
-    <!-- <form action="index.php?c=pub" method="POST" enctype="multipart/form-data" > 
-            Título: <input type="text" name="title" placeholder="Título" required/><br>
-            Texto: <textarea name="text" required></textarea><br>
-            <input type="file" name="img">
-            <input type="submit" name="editPub" value="Editar" placeholder="Editar">
-    </form> -->
+
 </body>
 </html>

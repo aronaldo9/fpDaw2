@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar Rol</title>
+</head>
+<body>
+    <h1>Cambiar Rol</h1>
+    <?php
+        require_once(__DIR__ . '/../Model/UserRepository.php'); // Incluye el archivo UserRepository.php
+        $users = UserRepository::getUsers(); // Obtiene la lista de usuariosS
+
+        foreach($users as $user) {
+            echo $user->getUserName();
+            echo '<form action="index.php?c=adminPanel&editRol=1" method="POST" enctype="multipart/form-data">
+                Rol: <input type="number" name="editedRol" value="' . $user->getRol() . '" required/><br><br>
+                <input type="hidden" name="id_user" value="' . $user->getId() . '">
+                <input type="submit" name="editRol" value="Cambiar Rol">
+            </form>';
+            echo '<br>';
+            echo 'Rol actual: ' . $user->getRol(); // Mostrar el rol actual
+            echo '<br><br>';
+            echo '<hr>';
+        }
+    ?>
+</body>
+</html>

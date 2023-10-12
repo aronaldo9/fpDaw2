@@ -11,4 +11,10 @@ if(!empty($_GET['editPub'])){
     die;
 }
 
+if(!empty($_GET['editPub'])){
+    $pubs = UserRepository::getUsers();
+    include("View/editRolView.phtml");    
+    die;
+}
+
 ?>

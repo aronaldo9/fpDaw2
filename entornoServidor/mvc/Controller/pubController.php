@@ -7,6 +7,8 @@ if(!empty($_GET['newPub'])) {
 
 if (!empty($_POST['newPub'])) {
     PublicacionRepository::publicar($_POST,$_FILES);
+    die;
 }
+
 
 ?>

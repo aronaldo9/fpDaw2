@@ -46,19 +46,14 @@ class UserRepository{
     }
 
     
-    public static function cambiarRol($userId, $nuevoRol) {
+    public static function updateRolById($rol,$id) {
         $bd = Conectar::conexion();
     
         // Actualizar el rol del usuario en la base de datos
-        $q = "UPDATE users SET rol = '".$nuevoRol."' WHERE id_user = '".$userId."'";
-        $result = $bd->query($q);
-    
-        // Verificar si la actualización fue exitosa y devolver un mensaje apropiado
-        if ($result) {
-            return "El rol del usuario ha sido actualizado correctamente.";
-        } else {
-            return "Error al actualizar el rol del usuario.";
-        }
+        $q = "UPDATE users SET rol = ".$rol." WHERE id_user= ".$id;
+        if ($result = $bd->query($q)) return TRUE;
+        else return FALSE;
+        
     }
     
     

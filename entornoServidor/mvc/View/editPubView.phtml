@@ -6,7 +6,7 @@
     <title>Editar Publicaciones</title>
 </head>
 <body>
-    <h1>Editar Publicación</h1>
+    <h1>Editar Publicaciones</h1>
 
     <?php
         foreach($pubs as $pub) { 
@@ -19,7 +19,7 @@
                 Título: <input type="text" name="editedTitle" value="' . $pub->getTitle() . '" required/><br><br>
                 Texto: <textarea name="editedText" required>' . $pub->getText() . '</textarea><br><br>
                 <input type="hidden" name="pubId" value="' . $pub->getId() . '">
-                <input type="submit" name="editPub" value="Editar">
+                <input type="submit" name="pubEdit" value="Editar">
             </form>';
             echo '<br>';
             echo '<hr>';

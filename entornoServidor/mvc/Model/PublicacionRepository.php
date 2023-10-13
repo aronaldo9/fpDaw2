@@ -32,17 +32,21 @@ class PublicacionRepository{
         return $bd->insert_id;
     }
 
-    public static function editar($datos,$img)
+    public static function updatePubById($datos,$imagen)
     {
-        $image=$img['img']['name'];
-        move_uploaded_file($img['img']['tmp_name'],'public/img/'.$image);
+        if(!empty($imagen)){
+            move_uploaded_file($imagen['img']['tmp_name'],'public/img/'.$imagen['name']);
+            $datos['img']=$imagen['name'];
+            unlink("public/img/".$datos['img']);
+            $datos['img']=$imagen['name'];
+        }
 
         $bd = Conectar::conexion();
         $q = "UPDATE publicacion 
         SET title = '" . $datos['title'] . "', 
-            text = '" . $datos['text'] . "', 
-            image = '" . $image . "'
-        WHERE id = " . $datos['id'];;
+            text = '" . $datos['text'] . "',
+            img = '" . $datos['img']."'
+        WHERE id = " . $datos['id'];
         
         
         $bd->query($q);

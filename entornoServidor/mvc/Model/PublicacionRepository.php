@@ -35,8 +35,8 @@ class PublicacionRepository{
     public static function updatePubById($datos,$imagen)
     {
         if(!empty($imagen)){
-            move_uploaded_file($imagen['img']['tmp_name'],'public/img/'.$imagen['name']);
-            $datos['img']=$imagen['name'];
+            move_uploaded_file($imagen['tmp_name'], 'public/img/' . $imagen['img']);
+            $datos['img'] = $imagen['img'];
             unlink("public/img/".$datos['img']);
             $datos['img']=$imagen['name'];
         }

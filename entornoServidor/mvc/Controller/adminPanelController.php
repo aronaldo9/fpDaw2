@@ -4,11 +4,26 @@ if(!empty($_POST['changeRol'])){
     UserRepository::updateRolById($_POST['state'],$_POST['id_user']);
 }
 
+if(!empty($_POST['editPub'])){
+    PublicacionRepository::updatePubById($_POST,$_FILES);
+}
+
 if(!empty($_GET['editPub'])){
     $pubs = PublicacionRepository::getPublicaciones();
     include("View/editPubView.phtml");    
     die;
 }
+
+if(!empty($_POST['editPub'])){
+    $editedData = [
+        'id' => $_POST['pubId'],
+        'title' => $_POST['editedTitle'],
+        'text' => $_POST['editedText'],
+        'img' => $_FILES,
+    ];
+    PublicacionRepository::updatePubById($editedData,$_FILES);
+}
+
 
 
 if(!empty($_GET['editRol'])){

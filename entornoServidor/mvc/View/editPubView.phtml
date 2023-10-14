@@ -20,6 +20,7 @@
                 Texto: <textarea name="editedText" required>' . $pub->getText() . '</textarea><br><br>
                 <input type="hidden" name="pubId" value="' . $pub->getId() . '">
                 <input type="submit" name="pubEdit" value="Editar">
+                <input type="hidden" name="pubId" value="<?php echo $pub->getId(); ?>">
             </form>';
             echo '<br>';
             echo '<hr>';

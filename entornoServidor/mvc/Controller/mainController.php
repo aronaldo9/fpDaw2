@@ -29,6 +29,10 @@ if(!empty($_GET['c'])){
     if($_GET['c']=="adminPanel"){
         require_once("Controller/adminPanelController.php");
     }
+    if($_GET['c']=="search"){
+        require_once("Controller/searchController.php");
+    }
+
 }
 
 

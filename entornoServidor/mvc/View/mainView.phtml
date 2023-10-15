@@ -19,12 +19,13 @@
             echo "<br><br>";    
         }
         echo "<a href= 'index.php?c=user&logout=1'>Logout</a><br><br>";
+        echo "<a href= 'index.php?c=search&search=1'>Buscar Publicación</a><br><br>";
     } 
     else {
         echo '<br><br>';
         echo '<form method="POST" action="index.php?c=user">
-        Nombre: <input type="text" name="username" placeholder="Nombre" required/><br>
-        Contraseña: <input type="password" name="password" placeholder="Contraseña" required/><br>
+        Nombre: <input type="text" name="username" placeholder="Nombre" required/><br><br>
+        Contraseña: <input type="password" name="password" placeholder="Contraseña" required/><br><br>
         <input type="submit" name="login" value="Entrar" placeholder="Entrar">
         </form>';
         echo '<br><br>';

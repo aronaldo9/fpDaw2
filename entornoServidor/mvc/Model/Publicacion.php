@@ -44,6 +44,14 @@ class Publicacion {
     {
         return $this->id;
     }
+
+    
+    public function setImg($img)
+    {
+        $this->img = $img;
+
+        return $this;
+    }
 }
 
 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de la búsqueda</title>
+</head>
+<body>
+    <h1>Resultados de la búsqueda</h1>
+    
+    <?php if (isset($pubs) && !empty($pubs)) { ?>
+        <ul>
+            <?php foreach ($pubs as $pub) { ?>
+                <li>
+                    <strong>Título:</strong> <?php echo $pub->getTitle(); ?><br>
+                    <strong>Texto:</strong> <?php echo $pub->getText(); ?><br>
+                    <?php if ($pub->getImage()) { ?>
+                        <img src="public/img/<?php echo $pub->getImage(); ?>" alt="Imagen de la publicación" width="50px">
+                    <?php } ?>
+                    <!-- Mostrar más detalles según sea necesario -->
+                </li>
+            <?php } ?>
+        </ul>
+    <?php } else { ?>
+        <p>No se encontraron resultados.</p>
+    <?php } ?>
+</body>
+</html>
+

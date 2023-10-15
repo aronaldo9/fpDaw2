@@ -52,6 +52,25 @@ class PublicacionRepository{
         $bd->query($q);
         return $bd->insert_id;
     }
+
+    public static function getPublicacionesBuscadas($datos) {
+        $bd = Conectar::conexion();
+        
+        $q = "SELECT * FROM publicacion WHERE title LIKE '%" . $datos['searchPub'] . "%' OR text LIKE '%" . $datos['searchPub'] . "%'";
+        
+        $result = $bd->query($q);
+        while($datos = $result->fetch_assoc()) {
+            $pub = new Publicacion($datos);
+            
+            // Obtener la imagen si existe
+            $pub->setImg($datos['img']); // Suponiendo que tengas un método setImage() en tu clase Publicacion
+            
+            $pubs[] = $pub;
+        }
+        
+        return $pubs;
+    }
+    
 }
 
 ?>

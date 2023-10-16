@@ -63,7 +63,7 @@ class PublicacionRepository{
             $pub = new Publicacion($datos);
             
             // Obtener la imagen si existe
-            $pub->setImg($datos['img']); // Suponiendo que tengas un método setImage() en tu clase Publicacion
+            $pub->setImg($datos['img']); 
             
             $pubs[] = $pub;
         }

@@ -29,15 +29,24 @@ if(!empty($_GET['c'])){
     if($_GET['c']=="adminPanel"){
         require_once("Controller/adminPanelController.php");
     }
-    if($_GET['c']=="search"){
-        require_once("Controller/searchController.php");
-    }
+    // if($_GET['c']=="search"){
+    //     require_once("Controller/searchController.php");
+    // }
 
 }
 
 
-$pubs = PublicacionRepository::getPublicaciones();
-// carga la vista 
+$buscador = "";
+$campo = "title";
+$ord = "asc";
+if (!empty($_POST['buscar'])) {
+    $buscador = $_POST['buscador'];
+    $campo = $_POST['opcionesCampo'];
+    $ord = $_POST['opcionesOrd'];
+}
+$pubs = PublicacionRepository::getPublicacionesBuscadas($buscador, $campo, $ord);
+
+//carga la vista correcta
 include("View/mainView.phtml");
 
 

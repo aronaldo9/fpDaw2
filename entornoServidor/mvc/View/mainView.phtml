@@ -19,7 +19,25 @@
             echo "<br><br>";    
         }
         echo "<a href= 'index.php?c=user&logout=1'>Logout</a><br><br>";
-        echo "<a href= 'index.php?c=search&search=1'>Buscar Publicación</a><br><br>";
+        echo '
+            <form action="" method="POST">
+                Buscador de publicaciones: <br>
+                <input type="text" name="buscador">
+                <label for="opcionesCampo">Ordenar por</label>
+                <select name="opcionesCampo">
+                    <option value="title">Titulo</option>
+                    <option value="text">Texto</option>
+                    <option value="pubdate">Fecha</option>
+                </select>
+                <label for="opcionesOrd">asc o desc</label>
+                <select name="opcionesOrd">
+                    <option value="asc">Ascendente</option>
+                    <option value="desc">Descendente</option>
+                </select>
+                <input type="submit" name="buscar" value="Buscar">
+            </form>
+        ';
+        echo '<br><br>';
     } 
     else {
         echo '<br><br>';
@@ -52,6 +70,11 @@
         echo '<hr>';
 
     }
+
+    echo "<a href=''>Página 1</a><br>";
+    echo "<a href=''>Página 2</a><br>";
+    echo "<a href=''>Página 3</a><br>";
+    echo "<a href=''>Página 4</a><br>";
 
     ?>
 

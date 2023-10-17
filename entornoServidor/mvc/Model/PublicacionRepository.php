@@ -53,21 +53,14 @@ class PublicacionRepository{
         return $bd->insert_id;
     }
 
-    public static function getPublicacionesBuscadas($datos) {
+    public static function getPublicacionesBuscadas($elemento, $campo, $ord) 
+    {
         $bd = Conectar::conexion();
-        
-        $q = "SELECT * FROM publicacion WHERE title LIKE '%" . $datos['searchPub'] . "%' OR text LIKE '%" . $datos['searchPub'] . "%'";
-        
-        $result = $bd->query($q);
-        while($datos = $result->fetch_assoc()) {
-            $pub = new Publicacion($datos);
-            
-            // Obtener la imagen si existe
-            $pub->setImg($datos['img']); 
-            
-            $pubs[] = $pub;
+        $result = $bd->query("SELECT * FROM publicacion WHERE title LIKE '%" . $elemento . "%' OR text LIKE '%" . $elemento . "%' ORDER BY " . $campo . " " . $ord);
+        $pubs = [];
+        while ($datos = $result->fetch_assoc()) {
+            $pubs[] = new Publicacion($datos);
         }
-        
         return $pubs;
     }
     

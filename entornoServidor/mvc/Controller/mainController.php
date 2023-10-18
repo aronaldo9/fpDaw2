@@ -39,12 +39,29 @@ if(!empty($_GET['c'])){
 $buscador = "";
 $campo = "title";
 $ord = "asc";
+
+// Número de resultados por página
+$publicacionesPorPagina = 2;
+
+// Página actual
+$paginaActual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+
+// Calcular el índice de inicio para la paginación
+$indiceInicio = ($paginaActual - 1) * $publicacionesPorPagina;
+
 if (!empty($_POST['buscar'])) {
     $buscador = $_POST['buscador'];
     $campo = $_POST['opcionesCampo'];
     $ord = $_POST['opcionesOrd'];
 }
-$pubs = PublicacionRepository::getPublicacionesBuscadas($buscador, $campo, $ord);
+$pubs = PublicacionRepository::buscar($buscador, $campo, $ord, $indiceInicio, $publicacionesPorPagina);
+
+// Obtener el número total de publicaciones
+$totalPublicaciones = count(PublicacionRepository::getPublicaciones());
+
+// Calcular el total de páginas
+$totalPaginas = ceil($totalPublicaciones / $publicacionesPorPagina);
+
 
 //carga la vista correcta
 include("View/mainView.phtml");

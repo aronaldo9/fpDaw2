@@ -53,15 +53,18 @@ class PublicacionRepository{
         return $bd->insert_id;
     }
 
-    public static function getPublicacionesBuscadas($elemento, $campo, $ord) 
+    public static function buscar($elemento, $campo, $ord, $inicio, $porPagina) 
     {
         $bd = Conectar::conexion();
-        $result = $bd->query("SELECT * FROM publicacion WHERE title LIKE '%" . $elemento . "%' OR text LIKE '%" . $elemento . "%' ORDER BY " . $campo . " " . $ord);
-        $pubs = [];
-        while ($datos = $result->fetch_assoc()) {
-            $pubs[] = new Publicacion($datos);
-        }
-        return $pubs;
+    $consulta = "SELECT * FROM publicacion WHERE title LIKE '%" . $elemento . "%' OR text LIKE '%" . $elemento . "%' ORDER BY " . $campo . " " . $ord . " LIMIT $inicio, $porPagina";
+    $result = $bd->query($consulta);
+    $pubs = [];
+
+    while ($datos = $result->fetch_assoc()) {
+        $pubs[] = new Publicacion($datos);
+    }
+
+    return $pubs;
     }
     
 }

@@ -71,10 +71,24 @@
 
     }
 
-    echo "<a href=''>Página 1</a><br>";
-    echo "<a href=''>Página 2</a><br>";
-    echo "<a href=''>Página 3</a><br>";
-    echo "<a href=''>Página 4</a><br>";
+    // Mostrar enlaces de paginación
+    echo '<div class="pagination">';
+    if ($paginaActual > 1) {
+        echo '<a href="?pagina=' . ($paginaActual - 1) . '">Anterior</a> ';
+    }
+
+    for ($i = 1; $i <= $totalPaginas; $i++) {
+        if ($i == $paginaActual) {
+            echo '<a class="active" href="?pagina=' . $i . '">' . $i . '</a> ';
+        } else {
+            echo '<a href="?pagina=' . $i . '">' . $i . '</a> ';
+        }
+    }
+
+    if ($paginaActual < $totalPaginas) {
+        echo '<a href="?pagina=' . ($paginaActual + 1) . '">Siguiente</a> ';
+    }
+    echo '</div>';
 
     ?>
 

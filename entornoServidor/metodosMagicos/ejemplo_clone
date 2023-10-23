@@ -1,0 +1,20 @@
+<?php
+class MiClase {
+    public $propiedad;
+
+    public function __clone() {
+        // Personaliza la lógica de clonación si es necesario
+        $this->propiedad = 'Valor personalizado durante la clonación';
+    }
+}
+
+$objetoOriginal = new MiClase();
+$objetoOriginal->propiedad = 'Valor original';
+
+// Clonamos el objeto
+$clon = clone $objetoOriginal;
+
+echo $clon->propiedad; // Mostrará 'Valor personalizado durante la clonación'
+
+
+?>

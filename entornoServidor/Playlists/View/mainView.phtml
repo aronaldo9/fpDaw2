@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Listas de Reproducción</h1>
+    <h2>Inicia sesión</h2>
+
+    <?php
+
+
+    if(!empty($_SESSION['user'])){
+        if($_SESSION['user']->getRol()>1) {
+            echo "<a href='index.php?c=pub&newPub=1'>Añadir publicación</a>";
+            echo "<br><br>";
+            echo "<a href='index.php?c=adminPanel'>Panel Administración</a>";
+            echo "<br><br>";    
+        }
+        echo "<a href= 'index.php?c=user&logout=1'>Logout</a><br><br>";
+        
+        echo '<br><br>';
+    } 
+    else {
+        echo '<br><br>';
+        echo '<form method="POST" action="index.php?c=user">
+        Nombre: <input type="text" name="username" placeholder="Nombre" required/><br><br>
+        Contraseña: <input type="password" name="password" placeholder="Contraseña" required/><br><br>
+        <input type="submit" name="login" value="Entrar" placeholder="Entrar">
+        </form>';
+        echo '<br><br>';
+        echo '<hr>';
+    }
+  
+
+    ?>
+
+</body>
+</html>
+
+
+
+

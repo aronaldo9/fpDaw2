@@ -48,6 +48,7 @@ class PublicacionRepository{
             img = '" . $datos['img']."'
         WHERE id = " . $datos['id'];
         
+        echo $q;
         
         $bd->query($q);
         return $bd->insert_id;

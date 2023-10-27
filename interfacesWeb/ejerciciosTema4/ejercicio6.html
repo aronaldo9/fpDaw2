@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuentes</title>
+    <style>
+        /* Fuentes importadas */
+        @import url('https://fonts.googleapis.com/css2?family=Agbalumo:wght@300;400;700&display=swap');
+            
+        /* Fuentes locales */
+        @font-face {
+            font-family: 'Brush Script MT Cursiva';
+               src: local('Brush Script MT Cursiva'), 
+               url("C:/Users/arona/Documents/FPDaw2/InterfacesWeb/BRUSHSCI.TTF") format('ttf');
+        }
+    
+        /* Estilo para el cuerpo de la página */
+        body {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    
+        /* Estilo para un encabezado con la fuente importada de Google Fonts */
+        .google-font {
+            font-family: 'Agbalumo', sans-serif;
+        }
+    
+        /* Estilo para un párrafo con la fuente local */
+        .local-font {
+            font-family: 'Brush Script MT Cursiva', sans-serif;
+        }
+    
+        /* Estilo para un párrafo con una fuente genérica en caso de que ninguna fuente esté disponible */
+        .generic-font {
+            font-family: sans-serif;
+        }
+
+        h1 {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        h2 {
+            font-family: 'Agbalumo', sans-serif;
+        }
+    </style>
+    </head>
+    <body>
+        <h1>Fuentes en HTML y CSS</h1>
+    
+        <p>Esta es una página de prueba donde puedes ver diferentes fuentes en acción.</p>
+    
+        <h2>Fuente Importada de Google Fonts</h2>
+        <p class="google-font">Este texto usa la fuente 'Agbalumo' importada de Google Fonts.</p>
+    
+        <h2>Fuente Local</h2>
+        <p class="local-font">Este texto usa una fuente local definida en el CSS.</p>
+    
+        <h2>Fuente Genérica</h2>
+        <p class="generic-font">Este texto usa una fuente genérica en caso de que ninguna fuente esté disponible.</p>
+    </body>
+    </html>
+    
+</html>

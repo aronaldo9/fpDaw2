@@ -3,15 +3,15 @@
 class User {
     private $id_user;
     private $username;
+    private $password;
     private $rol;
-    private $img;
 
     public function __construct($datos)
     {
         $this->id_user = $datos['id_user'];
         $this->username = $datos['username'];
-        $this->rol = $datos['rol'];
-        $this->img = $datos['img'];        
+        $this->password = $datos['password'];
+        $this->rol = $datos['rol'];       
     }
 
     public function getId(){
@@ -22,13 +22,14 @@ class User {
         return $this->username;
     }
 
+    public function getPassword(){
+        return $this->password;
+    }
+
     public function getRol(){
         return $this->rol;
     }
 
-    public function getImg() {
-        return $this->img;
-    }
 }
 
 

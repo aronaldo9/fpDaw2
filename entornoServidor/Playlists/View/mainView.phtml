@@ -5,19 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>   
+<body>
 
-    <h1>Bienvenido a AroniFy</h1>
+    <?php
+    // Verificar si el usuario está autenticado
+    if (isset($_SESSION['user'])) {
+        $user = $_SESSION['user'];
+        echo "<h1>Bienvenido, " . $user->getUserName() . " a AroniFy</h1>";
+        echo "<a href='index.php?c=user&action=logout'>Cerrar Sesión</a>";
+        // Mostrar aquí las listas de reproducción del usuario
+        // Agregar formulario de búsqueda de canciones
+    } else {
+        // Mostrar mensaje de bienvenida y enlaces de inicio de sesión y registro
+        echo "<h1>Bienvenido a AroniFy</h1>";
+        echo "<a href='index.php?c=user&action=login'>Iniciar Sesión</a>";
+        echo "<br><br>";
+        echo "<a href='index.php?c=user&action=register'>Registrarse</a>";
+    }
+    ?>
 
-    <!-- Enlace para ir a la página de inicio de sesión (login.phtml) -->
-    <a href="index.php?c=user&action=login">Iniciar Sesión</a>
-
-    <!-- Enlace para ir a la página de registro (register.phtml) -->
-    <a href="index.php?c=user&action=register">Registrarse</a>
-    
 
 </body>
 </html>
+
+
+
+
+
 
 
 

@@ -1,10 +1,10 @@
 <?php
-
-
+var_dump($_POST);
 
 if (!empty($_POST['login'])) {
     $user = UserRepository::validar($_POST['username'], $_POST['password']);
     if ($user) {
+        session_start();
         // El usuario se autenticó correctamente, almacenar en la sesión
         $_SESSION['user'] = $user;
         
@@ -12,22 +12,22 @@ if (!empty($_POST['login'])) {
         header("Location: index.php"); 
         exit();
     } 
-    // else {
-    //     // Las credenciales son incorrectas, mostrar mensaje de error o redirigir a la página de inicio de sesión
-    //     // header("Location: index.php?c=user&action=login&error=1");
-    // }
+    else {
+        // Las credenciales son incorrectas, mostrar mensaje de error en la vista de inicio de sesión
+        $error_message = "Credenciales incorrectas. Por favor, inténtelo de nuevo.";
+        // Redirigir a la vista de inicio de sesión y enviar el mensaje de error
+        header("Location: View/loginView.php?error=" . urlencode($error_message));
+    }
 }
 
 
-if($_GET['action'] == "login") {
-    include("View/loginView.phtml");
-    die;
-}
 
-if($_GET['action'] == "register") {
-    include("View/registerView.phtml");
-    die;
-}
+
+
+// if($_GET['action'] == "register") {
+//     include("View/registerView.phtml");
+//     die;
+// }
 
 
 if(!empty($_GET['logout'])){

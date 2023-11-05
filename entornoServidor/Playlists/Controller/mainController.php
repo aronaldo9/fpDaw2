@@ -1,36 +1,40 @@
 <?php
-// gestiona variables entrada
 
-// aplica cambios a la BD
-
-// carga la vista correcta
+require_once("Model/Cancion.php");
+require_once("Model/CancionRepository.php");
+require_once("Model/User.php");
+require_once("Model/UserRepository.php");
+require_once("Model/Lista.php");
+require_once("Model/ListaRepository.php");
 
 
 session_start();
-require_once('Model/User.php');
-require_once('Model/UserRepository.php');
 
-
-var_dump($_SESSION ['user']);
-
-var_dump($_POST);
-if(!empty($_GET['c'])){
-    if($_GET['c']=="user"){
-        require_once("Controller/userController.php");
-    }
-    // if($_GET['c']=="pub"){
-    //     require_once("Controller/pubController.php");
-    // }
-    // if($_GET['c']=="comment"){
-    //     require_once("Controller/commentController.php");
-    // }
-    // if($_GET['c']=="adminPanel"){
-    //     require_once("Controller/adminPanelController.php");
-    // }
-
+if (!empty($_GET['c'])) {
+    if ($_GET['c'] == "login") {
+        require_once("Controller/loginController.php");
     }
 
+    if ($_GET['c'] == "pl") {
+        require_once("Controller/listaController.php");
+    }
 
-//carga la vista correcta
-include("View/mainView.phtml");
-?>
+    if ($_GET['c'] == "cancion") {
+        require_once("Controller/cancionController.php");
+    }
+}
+
+
+if (isset($_SESSION['user'])) {
+    $listas = ListaRepository::mostrarListasDeUsuario($_SESSION['user']->getId());
+    include("View/mainView.phtml");
+} else {
+    include("View/loginView.phtml");
+}
+
+
+
+
+
+
+// datalist

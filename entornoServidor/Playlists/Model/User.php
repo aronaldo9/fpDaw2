@@ -1,36 +1,42 @@
 <?php
 
-class User {
-    private $id_user;
+class User
+{
+    private $id;
     private $username;
     private $password;
     private $rol;
 
-    public function __construct($datos)
+    function __construct($datos)
     {
-        $this->id_user = $datos['id_user'];
+        $this->id = $datos['id'];
         $this->username = $datos['username'];
         $this->password = $datos['password'];
-        $this->rol = $datos['rol'];       
+        $this->rol = $datos['rol'];
     }
 
-    public function getId(){
-        return $this->id_user;
+    function getId()
+    {
+        return $this->id;
     }
 
-    public function getUserName(){
+    function getUsername()
+    {
         return $this->username;
     }
 
-    public function getPassword(){
+    function getPassword()
+    {
         return $this->password;
     }
 
-    public function getRol(){
+    function getRol()
+    {
         return $this->rol;
     }
-
+    public function getListasFavs()
+    {
+        $listasFav = ListaRepository::mostrarListasFavByUser($this->id);
+        return $listasFav;
+    }
 }
-
-
-?>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Editar tu playlist<?php echo " " . $_GET['pl'] ?></h1>
+
+    <h3>Canciones en <?php echo " " . $_GET['pl'] ?></h3>
+
+    <?php
+
+
+    if (!empty($lista->getCanciones())) {
+        foreach ($lista->getCanciones() as $cancion) {
+            if (!empty($lista->getCanciones())) {
+                echo '<img src="Public/img/' . $cancion->getImg() . '" width="50px">';
+                echo $cancion->getName() . ' - ' . $cancion->getAutor() . '<a href="index.php?c=pl&del=' . $cancion->getId() . '&editar=' . $_GET['editar'] . '&pl=' . $_GET['pl'] . '"> Eliminar</a><br>';
+                echo '<audio controls>
+                <source src="Public/audio/' . $cancion->getArchivo() . '" type="audio/mpeg">
+                Tu navegador no soporta la reproducción de audio.
+            </audio>';
+            } else {
+                echo "Aún no tienes ninguna cancion en tu playlist";
+            }
+        }
+    } else {
+        echo "Aún no tienes ninguna cancion en tu playlist";
+    }
+
+
+    ?>
+
+    <h3>Canciones disponibles para añadir a <?php echo " " . $_GET['pl'] ?></h3>
+    <?php
+
+    // foreach ($canciones as $cancion) {
+    //     echo $cancion->getName() . '<a href="index.php?c=pl&add=' . $cancion->getId() . '&editar=' . $_GET['editar'] . '&pl=' . $_GET['pl'] . '"> Añadir</a><br>';
+    // }
+
+
+    ?>
+    <?php echo '<form action="index.php?c=pl&editar=' . $_GET["editar"] . '" method="post">'; ?>
+    <label for="buscar">Buscar:</label>
+    <input type="text" id="buscar" name="buscar" list="canciones">
+    <datalist id="canciones">
+        <?php
+        foreach ($canciones as $cancion) {
+            echo '<option value="' . $cancion->getName() . '">' . $cancion->getAutor() . '</option>';
+        }
+        ?>
+    </datalist>
+    <input type="submit" name="addCancion" value="Enviar">
+    </form>
+
+    <a href="index.php?vuelta=1">Volver</a>
+</body>
+
+</html>

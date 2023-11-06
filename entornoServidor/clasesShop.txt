@@ -1,0 +1,4 @@
+Producto: id,name,description,image,prize,stock
+Usuario: id,name,password,rol,orders(no es un campo de tabla)
+Line: id,idProduct,cantidad,idOrder,prize
+Order: id,idUser,state,lines(no es un campo de tabla),date

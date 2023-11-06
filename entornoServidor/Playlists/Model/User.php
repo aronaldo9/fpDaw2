@@ -2,14 +2,14 @@
 
 class User
 {
-    private $id;
+    private $id_user;
     private $username;
     private $password;
     private $rol;
 
     function __construct($datos)
     {
-        $this->id = $datos['id'];
+        $this->id = $datos['id_user'];
         $this->username = $datos['username'];
         $this->password = $datos['password'];
         $this->rol = $datos['rol'];
@@ -17,7 +17,7 @@ class User
 
     function getId()
     {
-        return $this->id;
+        return $this->id_user;
     }
 
     function getUsername()
@@ -36,7 +36,7 @@ class User
     }
     public function getListasFavs()
     {
-        $listasFav = ListaRepository::mostrarListasFavByUser($this->id);
+        $listasFav = ListaRepository::mostrarListasFavByUser($this->id_user);
         return $listasFav;
     }
 }

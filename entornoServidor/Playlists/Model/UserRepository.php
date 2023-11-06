@@ -6,7 +6,8 @@ class UserRepository
     static function login($u, $p)
     {
         $bd = Conectar::conexion();
-        $result = $bd->query("SELECT * FROM user WHERE username='" . $u . "' AND password=MD5('" . $p . "')");
+        $result = $bd->query("SELECT * FROM users WHERE username='" . $u . "' AND password=MD5('" . $p . "')");
+        var_dump($result);
 
         if ($datos = $result->fetch_assoc()) {
             return new User($datos);

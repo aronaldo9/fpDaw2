@@ -5,7 +5,7 @@ class ListaRepository
     static function rellenarCanciones($idLista)
     {
         $bd = Conectar::conexion();
-        $result = $bd->query("SELECT * FROM cancion WHERE id IN (SELECT idCancion FROM cancionlista WHERE idLista=$idLista)");
+        $result = $bd->query("SELECT * FROM songs WHERE id_song IN (SELECT id_song FROM song_playlist WHERE id_songPL=$idLista)");
 
         $canciones = [];
         while ($datos = $result->fetch_assoc()) {
@@ -21,13 +21,13 @@ class ListaRepository
     static function crearLista($idUser, $tituloPL)
     {
         $bd = Conectar::conexion();
-        $bd->query("INSERT INTO lista VALUES (null,'" . $idUser . "','" . $tituloPL . "')");
+        $bd->query("INSERT INTO playlists VALUES (null,'" . $idUser . "','" . $tituloPL . "')");
     }
 
     static function anadirCanPl($idCancion, $idLista, $nombreLista)
     {
         $bd = Conectar::conexion();
-        $q = "INSERT INTO cancionlista VALUES (null," . $idCancion . "," . $idLista . ")";
+        $q = "INSERT INTO song_playlist VALUES (null," . $idCancion . "," . $idLista . ")";
         $bd->query($q);
         header("Location: index.php?c=pl&editar=" . $idLista . "&pl=" . $nombreLista);
     }
@@ -35,7 +35,7 @@ class ListaRepository
     static function mostrarListasDeUsuario($idUser)
     {
         $bd = Conectar::conexion();
-        $result = $bd->query("SELECT * FROM lista WHERE idUser=" . $idUser);
+        $result = $bd->query("SELECT * FROM playlists WHERE id_user=" . $idUser);
 
         $listas = [];
         while ($datos = $result->fetch_assoc()) {
@@ -46,7 +46,7 @@ class ListaRepository
     static function mostrarListaPorId($idLista)
     {
         $bd = Conectar::conexion();
-        $result = $bd->query("SELECT * FROM lista WHERE id=" . $idLista);
+        $result = $bd->query("SELECT * FROM playlists WHERE id_playlist=" . $idLista);
 
         $lista = null;
         if ($datos = $result->fetch_assoc()) {
@@ -58,14 +58,14 @@ class ListaRepository
     static function eliminarCanPl($idLista, $idCancion, $nombreLista)
     {
         $bd = Conectar::conexion();
-        $bd->query('DELETE FROM cancionlista WHERE idCancion=' . $idCancion . ' AND idLista=' . $idLista . '');
+        $bd->query('DELETE FROM song_playlist WHERE id_song=' . $idCancion . ' AND id_playlist=' . $idLista . '');
         header("Location: index.php?c=pl&editar=" . $idLista . "&pl=" . $nombreLista);
     }
 
     static function getCanByTitle($titulo)
     {
         $bd = Conectar::conexion();
-        $result = $bd->query('SELECT * FROM cancion WHERE title="' . $titulo . '"');
+        $result = $bd->query('SELECT * FROM songs WHERE title="' . $titulo . '"');
 
         $cancion = null;
         if ($datos = $result->fetch_assoc()) {
@@ -77,7 +77,7 @@ class ListaRepository
     static function buscarPl($nombrePl)
     {
         $bd = Conectar::conexion();
-        $result = $bd->query('SELECT * FROM lista WHERE name LIKE "%' . $nombrePl . '%"');
+        $result = $bd->query('SELECT * FROM playlists WHERE listname LIKE "%' . $nombrePl . '%"');
 
         $listas = [];
         while ($datos = $result->fetch_assoc()) {
@@ -89,13 +89,13 @@ class ListaRepository
     static function listaFav($idUser, $idLista)
     {
         $bd = Conectar::conexion();
-        $bd->query('INSERT INTO userlistafav VALUES (null,' . $idUser . ',' . $idLista . ')');
+        $bd->query('INSERT INTO user_playlistfav VALUES (null,' . $idUser . ',' . $idLista . ')');
     }
 
     static function mostrarListasFavByUser($idUser)
     {
         $bd = Conectar::conexion();
-        $result = $bd->query('SELECT * FROM lista WHERE id IN (SELECT idLista FROM userlistafav WHERE idUser=' . $idUser . ')');
+        $result = $bd->query('SELECT * FROM playlists WHERE id_playlist IN (SELECT id_playlist FROM user_playlistfav WHERE id_user=' . $idUser . ')');
         $listas = [];
         while ($datos = $result->fetch_assoc()) {
             $listas[] = new Lista($datos);

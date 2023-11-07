@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+/*  Artículo de origen  
+
+https://webdesign.tutsplus.com/es/tutorials/exercises-in-flexbox-simple-web-components--cms-28049
+
+El maquetado contiene tres partes principales:
+
+marcador de posición para el logo
+navegación
+bloque de perfil de usuario
+
+*/
+body{
+      background-color: #f4f4f4;
+}
+
+.sidebar-wrapper{
+    width: 300px;
+    margin: 30px auto;
+}
+
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    height: 500px;
+    background-color: #FFF;
+}
+
+    .sidebar__nav{
+        flex-grow: 1;
+        list-style: none;
+        padding: 0;
+    }
+
+ </style>
+  </head>
+  <body>
+
+ <!--Sidebar Component-->
+<div class="sidebar-wrapper">
+  <div class="sidebar">
+      <div class="sidebar__logo">
+          <h3> Sidebar </h3>
+      </div>
+      <ul class="sidebar__nav">
+          <li> Home </li>
+          <li> About Me</li>
+          <li> Portfolio</li>
+          <li> Contact Me</li>
+      </ul>
+      <div class="sidebar__profile">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/93.jpg" alt="Profile Photo">
+        <h4>Linda Hart</h4>
+      </div>
+  </div>
+</div>
+  </body>
+</html>

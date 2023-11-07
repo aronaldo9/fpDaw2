@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style>
+/*  Artículo de origen  
+
+https://programacion.net/articulo/5_tecnicas_flexbox_que_deberias_conocer_1418
+
+Crear grids responsive
+----- ----- ----------
+
+La mayoría de los desarrolladores se basan en frameworks CSS para crear grids responsive. Bootstrap es el más popular, pero hay cientos de librerías que te pueden ayudar con esta tarea. Por lo general funcionan bien y cuentan con un montón de opciones, pero suelen pesar bastante. Si eres un manitas o no quieres utilizar un framework entero sólo para un grid, Flexbox tiene la solución.
+
+Una fila en el grid de Flexbox es simplemente un contenedor con display:flex. Las columnas horizontales dentro de él pueden ser infinitas, el ajuste del tamaño de los cuales se realiza a través de flex. El flex model se adapta al tamaño de la ventana, por lo que esta configuración debe verse bien en todos los dispositivos. Sin embargo, si decidimos que no hay suficiente espacio horizontal en la pantalla, puedes convertir fácilmente el diseño en uno vertical con una media-query. 
+
+*/
+.container{
+        display: flex;
+}
+
+/* Classes for each column size. */
+
+.col-1{
+        flex: 1;
+        background-color: lightblue;
+}
+
+.col-2{
+        flex: 2;
+        background-color: lightyellow;
+}
+
+@media (max-width: 800px){
+        .container{
+                /* Turn the horizontal layout into a vertical one. */
+                flex-direction: column;         
+        }
+}
+ </style>
+  </head>
+  <body>
+<div class="container">
+
+    <!-- This column will be 25% wide -->
+    <div class="col-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+
+    <!-- This column will be 50% wide -->
+    <div class="col-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+
+    <!-- This column will be 25% wide -->
+    <div class="col-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+
+</div>
+  </body>
+</html>

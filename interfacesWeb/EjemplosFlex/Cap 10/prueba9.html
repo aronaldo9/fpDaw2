@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style>
+/*  Artículo de origen  
+
+https://programacion.net/articulo/5_tecnicas_flexbox_que_deberias_conocer_1418
+
+Crear el pie fijo perfecto
+----- -- --- ---- --------
+
+Flexbox tiene una solución fácil a este problema también. Cuando desarrollamos páginas que incluyen un pie de página fijo, si lo hacemos todo en los elementos flex podemos estar seguros de que nuestro pie de página permanecerá siempre en la parte inferior de la página.
+
+Aplicando display:flex al tag body podemos llevar a cabo todo nuestro diseño de página utilizando propiedades de flex. Una vez hecho esto, el contenido principal de la página web puede ser un elemento flex y el pie otro, lo que hace que sea muy fácil el manipular su posicionamiento y colocarlos exactamente donde queremos. 
+
+*/
+
+*{
+
+  margin: 0px;
+  padding: 0px;
+}
+html{
+    height: 100%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.main{
+   /* The main section will take up all the available free space
+      on the page that is not taken up by the footer. */
+   flex: 1 0 auto;
+   background-color: lightcoral;
+}
+
+footer{
+   /* The footer will take up as much vertical space as it needs and not a pixel more. */
+   flex: 0 0 auto;
+   background-color: #CCC;
+}
+ </style>
+  </head>
+  <body>
+<body>
+    
+    <!-- All the page content goes here  -->
+
+    <div class="main">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+
+
+    <!-- Our sticky foooter -->
+
+    <footer>Pie de página</footer>
+
+</body>
+  </body>
+</html>

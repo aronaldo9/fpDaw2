@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta charset="UTF-8" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style>
+/*  Artículo de origen  
+
+https://developer.mozilla.org/es/docs/Web/CSS/CSS_Flexible_Box_Layout/Casos_de_uso_tipicos_de_Flexbox.
+
+Diseño de tarjeta empujando hacia abajo  el footer
+------ -- ------- --------- ----- -----  -- ------
+
+Ya sea que use flexbox o CSS Grid para diseñar una lista de componentes de tarjeta, estos métodos de diseño solo funcionan en los elementos directos de los componentes flex o grid. Esto significa que si tiene cantidades variables de contenido, la tarjeta se extenderá hasta la altura del área de la cuadrícula o del contenedor flexible. Cualquier contenido interno usa un diseño de bloque regular, lo que significa que en una tarjeta con menos contenido, el pie de página subirá hasta la parte inferior del contenido en lugar de adherirse a la parte inferior de la tarjeta.
+
+*/
+.cards{
+
+	display: flex;
+    flex-flow: row wrap;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+
+
+.card .content {
+    flex: 1 1 auto;
+    overflow: scroll;
+}
+
+
+.card footer{
+	background-color: #ccc;
+
+}
+ </style>
+  </head>
+  <body>
+<body>
+    
+    <div class="cards">
+    <div class="card">
+        <div class="content">
+            <p>This card doesn't have much content.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card doesn't have much content.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card doesn't have much content.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card doesn't have much content.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card doesn't have much content.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card doesn't have much content.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card doesn't have much content.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card doesn't have much content.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card doesn't have much content.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card doesn't have much content.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card doesn't have much content.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card doesn't have much content.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card doesn't have much content.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card doesn't have much content.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card doesn't have much content.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+    <div class="card">
+        <div class="content">
+            <p>This card has a lot more content which means that it defines the height of the container the cards are in. I've laid the cards out using grid layout, so the cards themselves will stretch to the same height.</p>
+        </div>
+        <footer>Card footer</footer>
+    </div>
+</div>
+      
+
+</body>
+  </body>
+</html>

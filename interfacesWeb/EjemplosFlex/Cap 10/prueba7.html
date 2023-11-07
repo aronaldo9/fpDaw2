@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style>
+/*  Artículo de origen  
+
+https://programacion.net/articulo/5_tecnicas_flexbox_que_deberias_conocer_1418
+
+Centrado vertical y horizontal
+
+El centrado vertical en CSS es uno de esos problemas que nos hace preguntarnos: ¿Cómo una cosa tan trivial todavía es tan complicado de llevarlo a cabo? Y es que realmente es así. Si buscas en Google “centrado vertical CSS”, verás una cantidad infinita de diferentes técnicas, y la mayoría de ellas implicarán tablas o transformaciones, cosas que no están pensadas para hacer maquetaciones.
+
+Flexbox ofrece una solución fácil al problema. Cada diseño flex tiene dos direcciones (el eje X y el Y) y dos propiedades separadas para su alineación. Si queremos llevarlo a cabo podemos posicionar cualquier elemento justo en el medio de su contenedor principal. 
+
+*/
+.container{
+        display: flex;
+
+        /* Center according to the main axis */
+        justify-content: center;
+
+        /* Center according to the secondary axis */
+        align-items: center;
+        border: 1px solid black;
+        width: 500px;
+        height: 500px;
+}
+
+.container div{
+    border: 1px solid black;
+    background-color: yellow;
+	width: 100px;
+	height: 100px;
+}
+
+ </style>
+  </head>
+  <body>
+
+<div class="container">
+
+    <!-- Any element placed here will be centered
+         both horizonally and vertically -->
+
+    <div>...</div>
+
+</div>
+  </body>
+</html>

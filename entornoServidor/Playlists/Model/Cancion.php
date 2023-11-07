@@ -46,4 +46,20 @@ class Cancion
     {
         return $this->id;
     }
+
+    /**
+     * Get the value of duracion
+     */ 
+    public function getDuracion()
+    {
+        return $this->duracion;
+    }
+
+    /**
+     * Get the value of idUser
+     */ 
+    public function getIdUser()
+    {
+        return $this->idUser;
+    }
 }

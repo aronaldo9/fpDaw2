@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style>
+/*  Artículo de origen  
+
+https://programacion.net/articulo/5_tecnicas_flexbox_que_deberias_conocer_1418
+
+Crear columnas de igual altura
+ 
+El hecho de crear columnas con una misma altura, que puede parecer una tarea sencilla sobre el papel, es una tarea bastante molesta. A priori basta con pensar que estableciendo un min-height va a funcionar, pero no, porque una vez que la cantidad de contenido en las columnas empieza a ser diferente, algunos de ellos crecerán y otros quedarán más pequeños.
+
+La solución a este problema utilizando Flexbox no podría ser más sencillo. Todo lo que tenemos que hacer es inicializar el flex model, y después asegurarnos de que las propiedades flex-direction y align-items tienen sus valores por defecto.
+
+*/
+.container {
+        /* Initialize the flex model */
+        display: flex;
+
+        /* These are the default values but you can set them anyway */
+        flex-direction: row;    /* Items inside the container will be positioned horizontally */
+        align-items: stretch;   /* Items inside the container will take up it's entire height */
+        min-height: 500px;
+        height: 500px;
+}
+
+.container div{
+  border: 1px solid black;
+  margin: 5px;
+}
+ </style>
+  </head>
+  <body>
+
+<div class="container">
+
+    <!-- Equal height columns -->
+
+    <div>...</div>
+    <div>...</div>
+    <div>...</div>
+    
+</div>
+  </body>
+</html>

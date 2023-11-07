@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style>
+/*  Artículo de origen  
+
+https://programacion.net/articulo/5_tecnicas_flexbox_que_deberias_conocer_1418
+
+Reordenar elementos
+
+Hace tiempo, si tuviéramos que cambiar dinámicamente el orden de algunos elementos, probaríamos con algún truco de CSS, y, presos de nuestra frustración, probaríamos a hacerlo con JavaScript. Mediante Flexbox, sin embargo, esta tarea se reduce a aplicar una sola propiedad de CSS.
+
+Se llama order y hace lo que su nombre indica lo más sencillo posible. Nos permite intercambiar cualquier número de elementos flex y cambiar el orden en el que aparecen en pantalla. El único parámetro que hay que pasarle a esta propiedad es un número entero que determinará, claro está, la posición. Cabe decir que los números más bajos tienen una mayor prioridad. 
+
+*/
+.container{
+        display: flex;
+}
+
+/* Reverse the order of elements */
+
+.blue{
+        order: 3;
+        background-color: blue;
+        width: 100px;
+        height: 100px;
+}
+
+.red{
+        order: 2;
+        background-color: red;
+        width: 100px;
+        height: 100px;}
+
+.green{
+        order: 1;
+        background-color: green;
+        width: 100px;
+        height: 100px;}
+ </style>
+  </head>
+  <body>
+
+<div class="container">
+
+    <!-- These items will appear in reverse order -->
+
+    <div class="blue">...</div>
+    <div class="red">...</div>
+    <div class="green">...</div>
+
+</div>
+  </body>
+</html>

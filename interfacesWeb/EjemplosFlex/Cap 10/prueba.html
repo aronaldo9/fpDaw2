@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Cajas flexibles</title>
+	<meta charset="UTF-8" />
+	<style>
+	#caja {
+		width: 80%;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+	}
+	#caja > div {
+		padding: 5px;
+	}
+	.azul {
+		background-color: lightblue;
+		max-width: 150px;
+		min-width: 150px;
+	}
+	.verde {
+		background-color: lightgreen;
+
+	}
+	.amarillo {
+		background-color: lightyellow;
+		max-width: 150px;
+		min-width: 150px;
+	}
+	p {
+		margin: 0;
+	}
+	</style>
+</head>
+<body>
+<div id="caja">
+	<div class="azul">
+		<p>Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+	</div>
+	<div class="verde">
+		<p>Nulla vitae elit libero, a pharetra augue. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+	</div>
+	<div class="amarillo">
+		<p>Curabitur blandit tempus porttitor. Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Etiam porta sem malesuada magna mollis euismod.</p>
+	</div>
+</div>
+</body>
+</html>

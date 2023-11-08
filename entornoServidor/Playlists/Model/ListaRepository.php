@@ -5,7 +5,8 @@ class ListaRepository
     static function rellenarCanciones($idLista)
     {
         $bd = Conectar::conexion();
-        $result = $bd->query("SELECT * FROM songs WHERE id IN (SELECT id_song FROM song_playlist WHERE id_songPL=$idLista)");
+        $result = $bd->query("SELECT * FROM songs WHERE id IN (SELECT id_song FROM song_playlist WHERE id_playlist=$idLista)");
+        // var_dump($result);
 
         $canciones = [];
         while ($datos = $result->fetch_assoc()) {
@@ -95,7 +96,7 @@ class ListaRepository
     static function mostrarListasFavByUser($idUser)
     {
         $bd = Conectar::conexion();
-        $result = $bd->query('SELECT * FROM playlists WHERE id IN (SELECT id FROM user_playlistfav WHERE idUser=' . $idUser . ')');
+        $result = $bd->query('SELECT * FROM playlists WHERE id IN (SELECT id_playlist FROM user_playlistfav WHERE idUser=' . $idUser . ')');
         $listas = [];
         while ($datos = $result->fetch_assoc()) {
             $listas[] = new Lista($datos);

@@ -3,10 +3,6 @@
 class CancionRepository
 {
 
-    // static function duracion($cancion){
-
-    // }
-
     static function addCancion($datos, $files)
     {
         move_uploaded_file($files['img']['tmp_name'], 'public/img/' . $files['img']['name']);

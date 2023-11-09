@@ -21,13 +21,10 @@
     <h3>Tus listas favoritas</h3>
 
     <?php
-
-    foreach ($_SESSION['user']->getListasFavs() as $lista) {
-        echo $lista->getName();
+    $listasFavoritas = $_SESSION['user']->getListasFavs();
+    foreach ($listasFavoritas as $lista) {
+        echo $lista->getName() . " <a href='index.php?c=pl&abrir=" . $lista->getId() . "'>Abrir playlist</a><br>";
     }
-
-
-
     ?>
 
 

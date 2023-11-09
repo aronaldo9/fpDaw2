@@ -1,0 +1,37 @@
+<!-- openPLFavView.phtml -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Playlist<?php echo " " . $listaAbierta->getName() ?></title>
+</head>
+
+<body>
+    <h1>Detalles de la Playlist<?php echo " " . $listaAbierta->getName() ?></h1>
+
+    <h3>Canciones en <?php echo " " . $listaAbierta->getName() ?></h3>
+
+    <?php
+    if (!empty($listaAbierta->getCanciones())) {
+        foreach ($listaAbierta->getCanciones() as $cancion) {
+            echo '<img src="Public/img/' . $cancion->getImg() . '" width="50px">';
+            echo '<br>';
+            echo $cancion->getName() . ' - ' . $cancion->getAutor() . '<br>';
+            echo '<audio controls>
+                <source src="Public/audio/' . $cancion->getArchivo() . '" type="audio/mpeg">
+                Tu navegador no soporta la reproducción de audio.
+            </audio>';
+            echo '<br><br>';
+        }
+    } else {
+        echo "Aún no tienes ninguna canción en tu playlist";
+    }
+    ?>
+
+    <a href="index.php">Volver</a>
+</body>
+
+</html>

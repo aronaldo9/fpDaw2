@@ -11,6 +11,25 @@ if (!empty($_GET['fav'])) {
     ListaRepository::listaFav($_SESSION['user']->getId(), $_GET['fav']);
 }
 
+// Agrega la condición para abrir la lista
+if (!empty($_GET['abrir'])) {
+    // Lógica para abrir la lista (puedes redirigir o cargar la vista correspondiente)
+    // Puedes acceder al ID de la lista mediante $_GET['abrir']
+    $listaAbierta = ListaRepository::mostrarListaPorId($_GET['abrir']);
+
+    // Verifica si la lista existe antes de continuar
+    if ($listaAbierta) {        
+        // Ahora, carga la vista para mostrar la lista abierta
+        include("View/openPLFavView.phtml");
+        exit;
+    } else {
+        // Si la lista no existe, puedes manejar el caso de error
+        echo "La lista no existe o no tienes permisos para acceder.";
+        exit;
+    }
+}
+
+
 if (!empty($_GET['editar'])) {
     $canciones = CancionRepository::getCanciones();
     $lista = ListaRepository::mostrarListaPorId($_GET['editar']);

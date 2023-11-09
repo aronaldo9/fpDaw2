@@ -7,7 +7,7 @@
 .contenedor {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto auto 1fr 1fr 1fr auto;
+    grid-template-rows: auto auto auto auto 1fr auto;
     grid-template-areas: 
     "header header header"
     "nav nav nav"
@@ -15,7 +15,7 @@
     "productos productos productos"
     "multimedia multimedia multimedia"
     "footer footer footer";
-    min-height: 100vh; /* Asegura que el contenedor ocupe al menos el alto de la ventana */
+    min-height: 120vh; /* Asegura que el contenedor ocupe al menos el alto de la ventana */
     gap: 10px; /* Espacio entre las áreas */
     padding: 20px;
 }
@@ -29,11 +29,12 @@ header {
     justify-content: space-around;
 }
 header img {
-    width: 80px;
+    width: 80px !important;
 } 
 
 nav {
     grid-area: nav;
+    width: 100%;
     background-color: #FDD700;
     display: flex;
     flex-direction: row;
@@ -50,11 +51,107 @@ nav button {
 }
 
 .enlaces {
-    font-family: 'Montserrat', sans-serif;
-    align-items: center;
+    margin-top: 10px;
 }
 
-a {
+.enlaces .mi-enlace {
+    font-family: 'Montserrat', sans-serif !important;
+    align-items: center;
     text-decoration: none;
+    margin-top: 20px;
     margin-left: 20px;
+    color: white !important;
 }
+
+.enlaces .mi-enlace:hover {
+    color: black !important;
+}
+
+.slider {
+    grid-area: slider;
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+h5 {
+    font-family: "Roboto", sans-serif;
+}
+
+.productos {
+    grid-area: productos;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding-top: 30px;
+}
+
+.producto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 20px;
+}
+
+.producto img {
+    width:300px;
+    height:180px;
+    margin-top: 10px;
+}
+
+.producto h3{
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5em;
+}
+ 
+.producto p {
+    padding: 10px;
+    text-align: center;
+}
+
+.multimedia {
+    grid-area: multimedia;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.video {
+    width: 60%;
+}
+
+.localizacion {
+    background-color: #FDD700;
+    border-radius: 20px;
+    width: 40%;
+    padding: 10px;
+    text-align: center;
+}
+
+footer {
+    grid-area: footer;
+    margin-top: 30px;
+    background-color: gray;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+/* .col {
+    width: 33%;
+} */
+
+footer ul {
+    list-style: none;
+}
+
+footer li {
+    text-align: center;
+}
+
+
+

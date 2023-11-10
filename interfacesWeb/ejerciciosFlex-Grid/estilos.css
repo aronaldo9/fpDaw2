@@ -98,13 +98,14 @@ h5 {
 
 .producto img {
     width:300px;
-    height:180px;
+    height:220px;
     margin-top: 10px;
 }
 
 .producto h3{
     font-family: "Montserrat", sans-serif;
     font-size: 1.5em;
+    margin-top: 10px;
 }
  
 .producto p {
@@ -124,7 +125,8 @@ h5 {
 }
 
 .localizacion {
-    background-color: #FDD700;
+    background-color: gray;
+    color: white;
     border-radius: 20px;
     width: 40%;
     padding: 10px;
@@ -134,8 +136,7 @@ h5 {
 footer {
     grid-area: footer;
     margin-top: 30px;
-    background-color: gray;
-    color: white;
+    background-color:#FDD700;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -147,11 +148,79 @@ footer {
 
 footer ul {
     list-style: none;
+    padding: 20px 20px 0 20px;
 }
 
 footer li {
     text-align: center;
 }
 
+footer li a {
+    text-decoration: none;
+    color:gray;
+}
 
+footer li p {
+    padding-top: 20px;
+    color: black;
+}
+
+.iconos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 20px 0 20px;
+}
+
+
+
+/* Estilos página productos*/
+.contenedor-productos {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas: 
+    "header header"
+    "nav nav"
+    "categorias productos"
+    "footer footer"
+    ;
+}
+
+.categorias {
+    grid-area: categorias;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+}
+
+.categorias a {
+    text-decoration: none;
+    color: white;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}
+
+.categorias a:hover {
+    color:#FDD700;
+}
+
+.productos2 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.producto2 {
+    text-align: center;
+}
+
+.producto2 h3 {
+    font-family: "Montserrat", sans-serif;
+}
 

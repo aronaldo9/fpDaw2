@@ -12,7 +12,7 @@ class User
     {
         $this->id = $datos['id'];
         $this->name = $datos['name'];
-        $this->password = $datos['pasword'];
+        $this->password = $datos['password'];
         $this->rol = $datos['rol'];
         $this->orders = [];
     }
@@ -43,13 +43,6 @@ class User
         return $this->orders;
     }
 }
-
-
-
-
-
-
-
 
 
 ?>

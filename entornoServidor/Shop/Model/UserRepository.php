@@ -15,7 +15,15 @@ class UserRepository
         }
     }
 
+    static function registrarse($u, $p, $p2)
+    {
+        $bd = Conectar::conexion();
 
+        if ($p != $p2) {
+            echo "Las contraseñas no coinciden";
+        } else {
+            $q = 'INSERT INTO user VALUES (null,"' . $u . '",MD5("' . $p . '"),1)';
+            $bd->query($q);
+        }
+    }
 }
-
-?>

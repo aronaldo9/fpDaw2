@@ -7,5 +7,27 @@ require_once("Model/ProductRepository.php");
 require_once("Model/Line.php");
 require_once("Model/LineRepository.php");
 
-include("View/mainView.phtml");
+session_start();
+
+if (!empty($_GET['c'])) {
+    if ($_GET['c'] == "login") {
+        require_once("Controller/loginController.php");
+    }
+
+    if ($_GET['c'] == "pc") {
+        require_once("Controller/productController.php");
+    }
+
+    if ($_GET['c'] == "lc") {
+        require_once("Controller/lineController.php");
+    }
+}
+
+
+if (isset($_SESSION['user'])) {
+    $productos = ProductRepository::getProducts();
+    include("View/mainView.phtml");
+} else {
+    include("View/loginView.phtml");
+}
 ?>

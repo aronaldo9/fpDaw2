@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Control de Productos</title>
+</head>
+<body>
+    <h1>Control de Productos</h1>
+
+    <!-- Formulario para añadir productos -->
+    <h2>Añadir Producto</h2>
+    <form action="index.php?c=pc" method="post" enctype="multipart/form-data">
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" required>
+        <br><br>
+        <label for="name">Product Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>        
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" required>
+        <br><br>
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock" required>
+        <br><br>
+        <label for="img">Image:</label>
+        <input type="file" id="img" name="img" required>
+        <br><br>
+        <input type="submit" name="product" value="Añadir Producto">
+    </form>
+
+    <!-- Formulario para eliminar productos -->
+    <h2>Eliminar Producto</h2>
+    <form action="index.php?c=pc" method="post">
+        <label for="productId">ID del producto a eliminar:</label>
+        <input type="number" id="productId" name="productId" required>
+        <input type="submit" value="Eliminar" name="deleteProduct">
+    </form>
+</body>
+</html>

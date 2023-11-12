@@ -5,18 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop</title>
 
+    <style>
+        img {
+            width: 200px;
+        }
+        a {
+            text-decoration: none;
+            background-color: blue;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0px 10px 10px 0px lightblue;
+            margin: 10px;
+            padding: 5px;
+        }
+        .products {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
+            text-align: center;
+        }
+    </style>
 
 </head>
 <body>
     <h1>Welcome to MyShop</h1>
+    <a href="index.php?c=login&logout=1">Logout</a>
+    <br><br>
+    <?php if (isset($productos) && !empty($productos)) : ?>
+        <!-- Mostrar la lista de productos si el usuario está logueado -->
+        <div class="products">
+            <?php foreach ($productos as $producto) : ?>
+                <div class="product">
+                    <h2><?= $producto->getName() ?></h2>
+                    <p><?= $producto->getDescription() ?></p>
+                    <p>Precio: <?= $producto->getPrice() ?></p>
+                    <p>Stock: <?= $producto->getStock() ?></p>
+                    <img src="public/<?= $producto->getImg() ?>" alt="<?= $producto->getName() ?>">
+                    <br><br>
+                    <a href="index.php?c=lc&action=add&id=<?= $producto->getId() ?>">Agregar al Carrito</a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php else : ?>
+        <p>Inicia sesión para ver los productos.</p>
+    <?php endif; ?>
 
-    <?php
-        if(empty($_SESSION['user'])) {
-            echo '<a href="index.php?c=user&login=1">Login</a>';
-            echo '<a href="index.php?c=user&login=1">Sign Up</a>';
-        }
-    ?>
-
-    
+        
 </body>
 </html>

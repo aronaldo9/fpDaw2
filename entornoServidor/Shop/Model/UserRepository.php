@@ -26,4 +26,39 @@ class UserRepository
             $bd->query($q);
         }
     }
+
+    public static function getUsers() {
+        // consultar a la BD
+        $bd=Conectar::conexion();
+
+        $q="SELECT * FROM user";
+
+        $result=$bd->query($q);
+        while($datos=$result->fetch_assoc()){
+            $pubs[] = new User($datos);
+        }
+        // construir el modelo con un array de publicaciones
+
+        // devolver el array
+        return $pubs;
+    }
+
+    public static function getUserById($id) {
+        $bd=Conectar::conexion();
+        $q="SELECT * FROM user WHERE id='".$id."'";
+        $result=$bd->query($q);
+        if($datos=$result->fetch_assoc()){
+            return new User($datos);
+        }
+    }
+
+    
+    public static function updateRolById($rol,$id) {
+        $bd = Conectar::conexion();    
+        // Actualizar el rol del usuario en la base de datos
+        $q = "UPDATE user SET rol = ".$rol." WHERE id= ".$id;
+        if ($result = $bd->query($q)) return TRUE;
+        else return FALSE;
+        
+    }
 }

@@ -2,6 +2,43 @@
 
 class ProductRepository {
 
+    public static function addProduct($datos, $files)
+{
+    $bd = Conectar::conexion();
+    if ($bd->connect_errno) {
+        echo "Error en la conexión a la base de datos: " . $bd->connect_error;
+        return;
+    }
+
+    move_uploaded_file($files['img']['tmp_name'], 'public/' . $files['img']['name']);
+    
+    $q = "INSERT INTO product VALUES (NULL,'" . $datos['description'] . "','" . $datos['name'] . "', '" . $datos['price'] . "', '" . $datos['stock'] . "', '" . $files['img']['name'] . "')";
+
+    var_dump($q); // Verificar la consulta que se está ejecutando
+
+    if ($bd->query($q) === TRUE) {
+            echo "Nuevo registro insertado correctamente.";
+        } else {
+            echo "Error en la inserción: " . $bd->error;
+        }
+
+}
+
+public static function deleteProduct($productId) {
+    $bd = Conectar::conexion();
+
+    $q = "DELETE FROM product WHERE id = $productId";
+    var_dump($q);
+    $result = $bd->query($q);
+
+    if ($result) {
+        echo "Producto eliminado correctamente.";
+    } else {
+        echo "Error al eliminar el producto: " . $bd->error;
+    }
+}
+
+    
     public static function getProducts() {
         // consultar a la BD
         $bd=Conectar::conexion();
@@ -12,24 +49,9 @@ class ProductRepository {
         while($datos=$result->fetch_assoc()){
             $products[] = new Product($datos);
         }
-        // construir el modelo con un array de publicaciones
-
-        // devolver el array
         return $products;
     }
 
-    public static function addProduct($datos,$img)
-    {
-        $image=$img['img']['name'];
-        move_uploaded_file($img['img']['tmp_name'],'public/img/'.$image);
-
-        $bd = Conectar::conexion();
-        $q = "INSERT INTO product VALUES (NULL,'" . $datos['description'] . "','" . $datos['name'] . "', '" . $datos['price'] . "', '" . $datos['stock'] . "', '".$image."')";
-        
-        
-        $bd->query($q);
-        return $bd->insert_id;
-    }
 }
 
 ?>

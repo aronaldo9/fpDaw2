@@ -21,13 +21,26 @@ if (!empty($_GET['c'])) {
     if ($_GET['c'] == "lc") {
         require_once("Controller/lineController.php");
     }
+
+    if ($_GET['c'] == "ac") {
+        require_once("Controller/adminController.php");
+    }
+
 }
 
 
 if (isset($_SESSION['user'])) {
-    $productos = ProductRepository::getProducts();
-    include("View/mainView.phtml");
+    $user = $_SESSION['user'];
+    if ($user->getRol() == 2) {
+        include("View/adminView.phtml");
+    } else {
+        $productos = ProductRepository::getProducts();
+        include("View/mainView.phtml");
+    }
 } else {
     include("View/loginView.phtml");
 }
+
+
+
 ?>

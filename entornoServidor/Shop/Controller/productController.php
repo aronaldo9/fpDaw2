@@ -1,10 +1,9 @@
 <?php
 
-if (!empty($_GET['action'])) {
-    if ($_GET['action'] == 'productView') {
+if (!empty($_GET['productView'])) {
         include('./View/productView.phtml');
         exit(); 
-    }
+    
 }
 
 if (!empty($_POST['product'])) {

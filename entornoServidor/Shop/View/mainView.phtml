@@ -43,7 +43,7 @@
                     <p>Stock: <?= $producto->getStock() ?></p>
                     <img src="public/<?= $producto->getImg() ?>" alt="<?= $producto->getName() ?>">
                     <br><br>
-                    <a href="index.php?c=lc&action=add&id=<?= $producto->getId() ?>">Agregar al Carrito</a>
+                    <a href="index.php?c=lc&add=1&id=<?= $producto->getId() ?>">Agregar al Carrito</a>
                 </div>
             <?php endforeach; ?>
         </div>

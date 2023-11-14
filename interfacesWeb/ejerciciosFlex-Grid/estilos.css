@@ -142,10 +142,6 @@ footer {
     justify-content: space-around;
 }
 
-/* .col {
-    width: 33%;
-} */
-
 footer ul {
     list-style: none;
     padding: 20px 20px 0 20px;
@@ -243,3 +239,206 @@ footer li p {
 .iconos2 img {
     margin-right: 50px;
 }
+
+
+
+/* Estilos página piel*/
+.container_piel {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas: 
+    "cabecera_piel cabecera_piel cabecera_piel"
+    "navegador_piel navegador_piel navegador_piel"
+    "formulario formulario formulario"
+    "pie_piel pie_piel pie_piel"
+    ;
+}
+
+.cabecera_piel {
+    grid-area: cabecera_piel;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px;
+    gap: 10px;
+}
+.cabecera_piel img {
+    width: 80px !important;
+} 
+
+.navegador_piel {
+    grid-area: navegador_piel;
+    width: 100%;
+    background-color: #FDD700;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    justify-content: space-around;
+}
+
+.navegador_piel button {
+    background-color: black; /* Fondo dorado */
+    color: white; /* Texto negro */
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.enlaces_piel {
+    margin-top: 10px;
+}
+
+.enlaces_piel .mi-enlace_piel {
+    font-family: 'Montserrat', sans-serif !important;
+    align-items: center;
+    text-decoration: none;
+    margin-top: 20px;
+    margin-left: 20px;
+    color: white !important;
+}
+
+.enlaces_piel .mi-enlace_piel:hover {
+    color: black !important;
+}
+
+.pie_piel {
+    grid-area: pie_piel;
+    margin-top: 30px;
+    background-color:#FDD700;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.pie_piel ul {
+    list-style: none;
+    padding: 20px 20px 0 20px;
+}
+
+.pie_piel li {
+    text-align: center;
+}
+
+.pie_piel li a {
+    text-decoration: none;
+    color:gray;
+}
+
+.pie_piel li p {
+    padding-top: 20px;
+    color: black;
+}
+
+.iconos_piel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 20px 0 20px;
+}
+
+.iconos_piel img {
+    margin-left: 20px;
+}
+
+
+/* Estilos formulario */
+.formulario {
+    grid-area: formulario;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    width:340px;
+    height:500px;
+    background:#FDD700;
+    border-radius:8px;
+    box-shadow:0 0 40px -10px gray;
+    margin:calc(50vh - 220px) auto;
+    padding:20px 30px;
+    max-width:calc(100vw - 40px);
+    box-sizing:border-box;
+    font-family:'Montserrat',sans-serif;
+    position:relative
+}
+
+.formulario h1 {
+    margin: 10px;
+    text-align: center;
+    color: white;
+}
+
+.formulario h2 {
+    margin:10px 0;
+    padding-bottom:10px;
+    width:180px;
+    color:white;
+    border-bottom:3px solid white
+}
+
+.formulario input {
+    width:100%;
+    padding:10px;
+    box-sizing:border-box;
+    background:none;
+    outline:none;
+    resize:none;
+    border:0;
+    font-family:'Montserrat',sans-serif;
+    transition:all .3s;
+    border-bottom:2px solid white
+}
+
+.formulario input:focus {
+    border-bottom:2px solid white
+}
+
+.formulario p:before {
+    content:attr(type);
+    display:block;
+    margin:28px 0 0;
+    font-size:14px;
+    color: black;
+}
+
+.formulario button {
+    float:right;
+    padding:8px 12px;
+    margin:8px 0 0;
+    font-family:'Montserrat',sans-serif;
+    border:2px solid black;
+    background:0;
+    color:black;
+    cursor:pointer;
+    transition:all .3s
+}
+
+.formulario button:hover {
+    background:black;
+    color:#fff
+}
+
+.formulario div {
+    content:'Hi';
+    position:absolute;
+    bottom:-15px;
+    right:-20px;
+    background:black;
+    color:#fff;
+    width:320px;
+    padding:16px 4px 16px 0;
+    border-radius:6px;
+    font-size:13px;
+    box-shadow:10px 10px 40px -14px #000
+}
+
+.formulario span {
+    margin:0 5px 0 15px
+}
+

@@ -9,11 +9,54 @@ class UserRepository
         $result = $bd->query("SELECT * FROM user WHERE name='" . $u . "' AND password=MD5('" . $p . "')");
 
         if ($datos = $result->fetch_assoc()) {
-            return new User($datos);
+            $user = new User($datos);
+
+            // Verificamos si el usuario tiene un pedido activo
+            $activeOrder = UserRepository::getActiveOrder($user->getId());
+
+            if (!$activeOrder) {
+                // Si el usuario no tiene un pedido activo, se crea uno nuevo
+                UserRepository::createOrder($user->getId());
+            }
+
+            return $user;
         } else {
             return null;
         }
     }
+
+    public static function getActiveOrder($userId) {
+        $bd = Conectar::conexion();
+        $q = "SELECT * FROM ordershop WHERE idUser = '$userId' AND state = 'active'";
+        $result = $bd->query($q);
+    
+        if ($result->num_rows > 0) {
+            $orderData = $result->fetch_assoc();
+            return new Order($orderData);
+        } else {
+            return null;
+        }
+    }
+    
+    public static function createOrder($userId) {
+        $bd = Conectar::conexion();
+        $q = "INSERT INTO ordershop (idUser, state, date) VALUES ('$userId', 'active', NOW())";
+        $bd->query($q);
+    }
+
+    public static function getActiveOrderId($userId) {
+        $bd = Conectar::conexion();
+        $q = "SELECT id FROM ordershop WHERE idUser = '$userId' AND state = 'active'";
+        $result = $bd->query($q);
+    
+        if ($result->num_rows > 0) {
+            $orderData = $result->fetch_assoc();
+            return $orderData['id'];
+        } else {
+            return null;
+        }
+    }
+    
 
     static function registrarse($u, $p, $p2)
     {

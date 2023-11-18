@@ -1,0 +1,476 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contenedor {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto 1fr auto;
+    grid-template-areas: 
+        "header"
+        "nav"
+        "slider"
+        "productos"
+        "multimedia"
+        "footer";
+    min-height: 120vh;
+    gap: 10px;
+    padding: 20px;
+}
+
+header {
+    grid-area: header;
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+header img {
+    width: 80px;
+}
+
+nav {
+    grid-area: nav;
+    width: 100%;
+    background-color: #FDD700;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+}
+
+.busqueda,
+.enlaces {
+    width: 100%; /* Hacer que los elementos ocupen el 100% del ancho */
+    margin-bottom: 10px; /* Añadir un margen inferior para separar los elementos */
+}
+
+.enlaces {
+    display: flex;
+    flex-direction: column;
+}
+
+nav button {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+
+.enlaces .mi-enlace {
+    text-decoration: none;
+    color: white !important;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.enlaces .mi-enlace:hover {
+    color: black !important;
+}
+
+.slider {
+    grid-area: slider;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.productos {
+    grid-area: productos;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 30px;
+}
+
+.producto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 20px;
+}
+
+.producto img {
+    width:300px;
+    height:220px;
+    margin-top: 10px;
+}
+
+.producto h3{
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5em;
+    margin-top: 10px;
+}
+ 
+.producto p {
+    padding: 10px;
+    text-align: center;
+}
+
+.localizacion {
+    margin-top: 20px;
+}
+
+footer {
+    grid-area: footer;
+    margin-top: 30px;
+    background-color:#FDD700;
+}
+
+.fila {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+footer ul {
+    list-style: none;
+    padding: 20px 20px 0 20px;
+}
+
+footer li {
+    text-align: center;
+}
+
+footer li a {
+    text-decoration: none;
+    color:gray;
+}
+
+.iconos {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+
+/* Estilos página productos */
+.contenedor-productos {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-areas: 
+    "header"
+    "nav"
+    "categorias"
+    "productos"
+    "footer"
+    ;
+    min-height: 120vh;
+    gap: 10px;
+    padding: 20px;
+}
+
+header {
+    grid-area: header;
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+header img {
+    width: 80px;
+}
+
+.categorias {
+    grid-area: categorias;
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0 20px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.categorias a {
+    text-decoration: none;
+    color: black;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}
+
+.categorias a:hover {
+    color:#FDD700;
+}
+
+.productos2 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px ;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.producto2 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.producto2 img {    
+    border-radius: 10px;
+    box-shadow: 0 10px 10px 0 gray;
+}
+
+.producto2 h3 {
+    font-family: "Montserrat", sans-serif;
+    margin: 10px;
+}
+
+.producto2_olvidado {
+    display: none;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+ @media only screen and (min-width: 900px) {
+        
+    .contenedor {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto auto auto auto 1fr auto;
+        grid-template-areas: 
+        "header header header"
+        "nav nav nav"
+        "slider slider slider"
+        "productos productos productos"
+        "multimedia multimedia multimedia"
+        "footer footer footer";
+        min-height: 120vh; 
+        gap: 10px; 
+        padding: 20px;
+    }
+    
+    header {
+        grid-area: header;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 3em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    header img {
+        width: 80px !important;
+    } 
+    
+    nav {
+        grid-area: nav;
+        width: 100%;
+        background-color: #FDD700;
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+        justify-content: space-around;
+    }
+
+    .enlaces {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .slider {
+        grid-area: slider;
+        width: 100%;
+        margin: auto;
+        margin-top: 20px;
+    }
+    
+    h5 {
+        font-family: "Roboto", sans-serif;
+    }
+    
+    .productos {
+        grid-area: productos;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        padding-top: 30px;
+    }
+    
+    .producto {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: black;
+        font-family: Arial, Helvetica, sans-serif;
+        border-radius: 20px;
+    }
+    
+    .producto img {
+        width:300px;
+        height:220px;
+        margin-top: 10px;
+    }
+    
+    .producto h3{
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.5em;
+        margin-top: 10px;
+    }
+     
+    .producto p {
+        padding: 10px;
+        text-align: center;
+    }
+    
+    .multimedia {
+        grid-area: multimedia;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .video {
+        width: 60%;
+        margin-right: 20px;
+    }
+    
+    .localizacion {
+        background-color: gray;
+        color: white;
+        border-radius: 20px;
+        width: 40%;
+        padding: 10px;
+        text-align: center;
+    }
+    
+    footer {
+        grid-area: footer;
+        margin-top: 30px;
+        background-color:#FDD700;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    
+    footer ul {
+        list-style: none;
+        padding: 20px 20px 0 20px;
+    }
+    
+    footer li {
+        text-align: center;
+    }
+    
+    footer li a {
+        text-decoration: none;
+        color:gray;
+    }
+
+    /* Estilos página productos */
+    
+    .contenedor-productos {
+        display: grid;
+        grid-template-columns: 25% 75%;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas: 
+        "header header"
+        "nav nav"
+        "categorias productos2"
+        "footer footer"
+        ;
+    }
+    
+    .categorias {
+        grid-area: categorias;
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        justify-content: flex-start;
+    }
+    
+    .categorias a {
+        text-decoration: none;
+        color: black;
+        justify-content: center;
+        text-align: center;
+        padding: 10px;
+    }
+    
+    .categorias a:hover {
+        color:#FDD700;
+    }
+    
+    .productos2 {
+        grid-area: productos2;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 10px ;
+        gap: 10px;
+        justify-content: space-around;
+    }
+    
+    .producto2 {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .producto2 img {    
+        border-radius: 10px;
+        box-shadow: 0 10px 10px 0 gray;
+    }
+    
+    .producto2 h3 {
+        font-family: "Montserrat", sans-serif;
+        margin: 10px;
+    }
+
+    .producto2_olvidado {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .producto2_olvidado img {    
+        border-radius: 10px;
+        box-shadow: 0 10px 10px 0 gray;
+    }
+    
+    .producto2_olvidado h3 {
+        font-family: "Montserrat", sans-serif;
+        margin: 10px;
+    }
+    
+    .iconos2 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        padding: 20px 20px 0 20px;
+    }
+    
+    .iconos2 img {
+        margin-right: 50px;
+    }
+    
+}
+
+
+
+

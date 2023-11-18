@@ -38,7 +38,22 @@ public static function deleteProduct($productId) {
     }
 }
 
-    
+    public static function obtenerProductoPorId($productId)
+    {
+        $bd = Conectar::conexion();
+        $q = "SELECT * FROM product WHERE id = '$productId'";
+        $result = $bd->query($q);
+
+        if ($result->num_rows > 0) {
+            $productoData = $result->fetch_assoc();
+            print_r($productoData);
+            return new Product($productoData);
+        } else {
+            return null;
+        }
+    }    
+
+
     public static function getProducts() {
         // consultar a la BD
         $bd=Conectar::conexion();

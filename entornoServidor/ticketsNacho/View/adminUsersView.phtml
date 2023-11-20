@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php
+
+foreach($users as $user){
+    echo $user->getUsername()."<br>";
+
+    echo '
+    <form method="POST" action="index.php?c=admin"> 
+    <select name="state">';
+
+        foreach($state as $k => $v){
+            echo '<option value="'.$k.'" ';
+                if($user->getRol()==$k) echo "SELECTED";
+            echo '>'.$v.'</option>';
+        }
+    echo '</select>
+    <input type="hidden" name="userid" value="'.$user->getId().'">
+    <input type="submit" name="changeRol" value="Cambiar rol">
+    </form>
+    ';
+}
+
+
+?>
+
+
+</body>
+</html>

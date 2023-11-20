@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar Rol</title>
+
+    <style>
+        input {
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 10px 10px 0px lightblue;
+            margin: 10px;
+            padding: 5px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Cambiar Rol</h1>
+    <?php
+    foreach($users as $user) {
+        echo $user->getUsername()."<br>";
+    
+        echo '
+        <form method="POST" action="index.php?c=admin">
+        <select name="state">';
+            foreach($state as $k => $v){
+                echo '<option value="' .$k.'"';
+                    if($user->getRol()==$k) echo "SELECTED";
+                echo '>' .$v. '</option>';
+            }
+        echo '</select>
+        <input type="hidden" name="id" value="'.$user->getId().'">
+        <input type="submit" name="changeRol" value="Cambiar Rol">
+        </form>
+        <br>
+        ';
+    }
+        
+    ?>
+</body>
+</html>

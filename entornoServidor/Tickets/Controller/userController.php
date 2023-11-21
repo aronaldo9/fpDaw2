@@ -1,16 +1,29 @@
 <?php
 
-if (!empty($_POST['createTicket'])) {
-    $userId = $_SESSION['user']->getId();
-    $title = $_POST['title'];
-    $text = $_POST['text'];
-
-    // Validaciones adicionales si es necesario
-
-    TicketRepository::createTicket($userId, $title, $text);
-    // Puedes redirigir o mostrar un mensaje de éxito aquí
+if(isset($_GET['register'])){
+    include ("View/registerView.phtml");
+    die;
 }
 
-// Otras acciones del controlador para el cliente
+if(isset($_GET['logout'])){
+    session_destroy();
+    header("location: index.php");
+}
+
+if(isset($_POST['register'])){
+    if($_POST['password']==$_POST['password2']){
+        UserRepository::register($_POST['username'], $_POST['password']);
+        include ("View/mainView.phtml");
+        die;
+    }
+    else {
+        include ("View/registerView.phtml");
+        die;
+    }
+}
+
+if(isset($_POST['login'])){
+    $_SESSION['user']=UserRepository::checkLogin($_POST['username'], $_POST['password']);
+}
 
 ?>

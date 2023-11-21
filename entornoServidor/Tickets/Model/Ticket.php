@@ -1,65 +1,58 @@
 <?php
 
 class Ticket {
-    private $id;
-    private $title;
-    private $text;
-    private $state;
-    private $user_id;
-    private $answers;
-    private $rating;
 
-    function __construct($datos)
-    {
-        $this->id = $datos['id'];
-        $this->title = $datos['title'];
-        $this->text = $datos['text'];
-        $this->state = $datos['state'];
-        $this->user_id = $datos['user_id'];
-        $this->answers = AnswerRepository::getAnswersByTicketId($this->id);
-        $this->rating = $datos['rating'];
+    private $id, $title, $text, $state, $userId, $workerId, $responses, $valoration;
+
+    public function __construct($datos){
+        $this->id=$datos['id'];
+        $this->title=$datos['title'];
+        $this->text=$datos['text'];
+        $this->state=$datos['state'];
+        $this->userId=$datos['user_id'];
+        $this->workerId=$datos['worker_id'];
+        $this->valoration=$datos['valoration'];
     }
 
-    public function getId()
-    {
+    public function getId(){
         return $this->id;
     }
- 
-    public function getTitle()
-    {
+    public function getTitle(){
         return $this->title;
     }
-
-    public function getText()
-    {
+    public function getText(){
         return $this->text;
     }
- 
-    public function getState()
-    {
+    public function getState(){
         return $this->state;
     }
 
-    public function getUserId()
-    {
-        return $this->user_id;
+    public function addResponse($text){
+        ResponseRepository::newResponse($this->id, $text);
     }
 
-    public function getAnswers()
-    {
-        return $this->answers;
+    public function setWorker($id){
+        $this->workerId=$id;
+        TicketRepository::assignWorker($this->id, $id);
     }
 
-    public function getRating()
-    {
-        return $this->rating;
+    public function getResponses(){
+        return ResponseRepository::getResponsesByTicketId($this->id);
     }
 
-    public function addAnswer($text) {
-        AnswerRepository::newAnswer($this->id,$text);
+    public function getValoration(){
+        return $this->valoration;
+    }
+    public function close(){
+        $this->state=1;
+        TicketRepository::close($this->id);
+    }
+
+    
+    public function setValoration($v){
+        $this->valoration=$v;
+        TicketRepository::setVal($this->id, $v);
     }
 }
-
-
 
 ?>

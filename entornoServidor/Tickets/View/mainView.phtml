@@ -1,14 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <link rel="stylesheet" href="/fpDaw2/entornoServidor/Tickets/styles.css">
-
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Pagina principal</h1>
+
+<div class="container">
+    <h1>gestion tickets</h1>
+    <?php
+    if(!isset($_SESSION['user'])) {
+    ?>
+    <form action="index.php?c=user" method="POST">
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="password" placeholder="password">
+        <input type="submit" name="login" value="entrar">
+    </form>
+    <a href="index.php?c=user&register">Registrarme</a>
+    <?php }
+
+    else { 
+        ?>
+
+
+
+    <a href="index.php?c=user&logout">Salir</a>
+    <br><br>
+    <form action="index.php?c=ticket" method="POST">
+        <input type="text" name="title" placeholder="titulo">
+        <input type="text" name="text" placeholder="explica lo que pasa">
+        <input type="submit" name="newTicket">
+    </form>
+
+
+    <?php
+
+    if($_SESSION['user']->getRol()==2){
+
+
+    echo '<h2>Tickets no asignados</h2>';
+
+    foreach($tickets as $t){
+        echo '<h3>'.$t->getTitle().'</h3>'.$t->getText()."<br>";
+        echo'
+        <form action="index.php?c=ticket&ticket='.$t->getId().'" method="POST">
+        <input type="text" name="response">
+        <input type="submit" name="assign">
+        </form>
+        
+        ';
+
+    }
+    }
+
+    //mostrar tickets
+
+    echo '<h2>mis tickets</h2>';
+    foreach($_SESSION['user']->getTickets() as $t){
+        echo '<h3>'.$t->getTitle().'</h3>'.$t->getText()."<br>";
+
+        foreach($t->getResponses() as $r){
+            echo $r->getAuthor()->getUsername().": ".$r->getText().'<br>';
+        }
+
+        if($t->getState()<1){
+        echo'
+        <form action="index.php?c=ticket&ticket='.$t->getId().'" method="POST">
+        <input type="text" name="response">
+        <input type="submit" name="reply">
+        </form>
+        
+        ';
+        }
+        else { 
+            if($t->getValoration()==0)
+            echo '
+        <a href="index.php?c=ticket&valorar=1&ticket='.$t->getId().'">1</a> 
+        <a href="index.php?c=ticket&valorar=2&ticket='.$t->getId().'">2</a> 
+        <a href="index.php?c=ticket&valorar=3&ticket='.$t->getId().'">3</a> 
+        <a href="index.php?c=ticket&valorar=4&ticket='.$t->getId().'">4</a> 
+        <a href="index.php?c=ticket&valorar=5&ticket='.$t->getId().'">5</a> 
+        
+        ';
+
+        else echo "Valorado con un ".$t->getValoration();
+        }
+
+        if($_SESSION['user']->getRol()==2){
+            echo '<a href="index.php?c=ticket&close='.$t->getId().'">cerrar</a>';
+        }
+
+    }
+
+    } ?>
+</div>
+
+
 </body>
 </html>

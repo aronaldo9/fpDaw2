@@ -67,6 +67,18 @@ textarea {
     border-radius: 4px;
 }
 
+a {
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+a:hover {
+    background-color: #0056b3
+}
+
 .error-message {
     background-color: #ffebee; /* Color de fondo rojo claro */
     border: 1px solid #ffcdd2; /* Borde rojo claro */

@@ -7,14 +7,14 @@
 <body>
 
 <div class="container">
-    <h1>gestion tickets</h1>
+    <h1>Gestión de Tickets</h1>
     <?php
     if(!isset($_SESSION['user'])) {
     ?>
     <form action="index.php?c=user" method="POST">
         <input type="text" name="username" placeholder="username">
         <input type="password" name="password" placeholder="password">
-        <input type="submit" name="login" value="entrar">
+        <input type="submit" name="login" value="Entrar">
     </form>
     <a href="index.php?c=user&register">Registrarme</a>
     <?php }
@@ -27,7 +27,7 @@
     <a href="index.php?c=user&logout">Salir</a>
     <br><br>
     <form action="index.php?c=ticket" method="POST">
-        <input type="text" name="title" placeholder="titulo">
+        <input type="text" name="title" placeholder="título">
         <input type="text" name="text" placeholder="explica lo que pasa">
         <input type="submit" name="newTicket">
     </form>
@@ -38,10 +38,10 @@
     if($_SESSION['user']->getRol()==2){
 
 
-    echo '<h2>Tickets no asignados</h2>';
+    echo '<h2><u>Tickets no asignados</u></h2>';
 
     foreach($tickets as $t){
-        echo '<h3>'.$t->getTitle().'</h3>'.$t->getText()."<br>";
+        echo '<h3>Título: '.$t->getTitle().'</h3>Texto: '.$t->getText()."<br>";
         echo'
         <form action="index.php?c=ticket&ticket='.$t->getId().'" method="POST">
         <input type="text" name="response">
@@ -55,9 +55,9 @@
 
     //mostrar tickets
 
-    echo '<h2>mis tickets</h2>';
+    echo '<h2><u>Mis tickets</u></h2>';
     foreach($_SESSION['user']->getTickets() as $t){
-        echo '<h3>'.$t->getTitle().'</h3>'.$t->getText()."<br>";
+        echo '<h3>Título: '.$t->getTitle().'</h3>Texto: '.$t->getText()."<br>";
 
         foreach($t->getResponses() as $r){
             echo $r->getAuthor()->getUsername().": ".$r->getText().'<br>';

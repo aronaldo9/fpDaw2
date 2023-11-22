@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>gestion tickets</h1>
+        <h1>Gestión Tickets</h1>
 
         <a href="index.php?c=admin&users">Administrar usuarios</a>
 
@@ -16,10 +16,12 @@
 
 
         foreach($tickets as $t){
-            echo '<h3>'.$t->getTitle().'</h3>'.$t->getText()."<br>";
+            echo '<h3>Título: '.$t->getTitle().'</h3>Texto: '.$t->getText()."<br>";
         }
-
+        
         ?>
+        <br>
+        <a href="index.php?c=user&logout">Salir</a>
     </div>
 
 

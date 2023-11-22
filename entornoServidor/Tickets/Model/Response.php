@@ -19,6 +19,10 @@ class Response{
         return UserRepository::getUserById($this->authorId);
     }
 
+    public function toJson() {
+        return get_object_vars($this);
+    }
+
 }
 
 ?>

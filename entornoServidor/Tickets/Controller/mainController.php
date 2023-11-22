@@ -10,7 +10,7 @@ require_once("Model/ResponseRepository.php");
 session_start();
 
 if(!empty($_GET['c'])){
-        require_once("Controller/".$_GET['c']."Controller.php");
+    require_once("Controller/".$_GET['c']."Controller.php");
 }
 
 if(isset($_SESSION['user']) && $_SESSION['user']->getRol()==3){

@@ -53,6 +53,14 @@ class Ticket {
         $this->valoration=$v;
         TicketRepository::setVal($this->id, $v);
     }
+
+    public function toJson() {
+        $a = get_object_vars($this);
+        foreach($this->getResponses() as $k=>$r) {
+            $a['replies'][$k]=$r->toJson();
+        }
+        return $a;
+    }
 }
 
 ?>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+
+    <style>
+        h1 {
+            color:lime
+        }
+        
+        h1:nth-child(odd) {
+            text-decoration: underline;
+        }
+        /* Aplicar estilos al primer elemento de la lista */
+        ol li:first-child {
+          color: green;
+        }
+    
+        /* Aplicar estilos al último elemento de la lista */
+        ol li:last-child {
+          color: red;
+        }
+
+        p:first-of-type {
+            border-top: 1px solid black;
+        }
+
+        p:last-of-type {
+            border-bottom: 1px solid black;
+        }
+
+        /* Pintar de rojo a partir de la segunda fila y seguir el patrón */
+        tr:nth-child(3n+2) {
+            background-color: red;
+        }
+
+      </style>
+
+</head>
+<body>
+    <h1>Ejercicio 1</h1>
+    <ol>
+        <li>Elemento1</li>
+        <li>Elemento2</li>
+        <li>Elemento3</li>
+        <li>Elemento4</li>
+    </ol>
+
+    <h1>Ejercicio 2</h1>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro iusto consectetur nostrum doloribus tempora culpa nobis debitis alias! Maxime quae, voluptas ea deserunt ratione natus quasi dicta sequi ipsa! Ab obcaecati consequatur hic porro adipisci atque dolorum impedit soluta eum rem inventore quidem commodi amet enim ex illum, quo dolorem.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veniam, dolorum, quis officia neque ipsa, dignissimos provident perferendis iure quaerat magnam pariatur voluptatibus est. Iusto quae officiis facere sed cumque assumenda deleniti harum obcaecati maiores repudiandae placeat ex dolore, nesciunt voluptate eum fugit. Odit cumque autem quo natus aliquid aliquam?</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur voluptatem illo itaque nam quibusdam unde illum. Culpa delectus minima unde voluptatum id molestias ipsum doloremque corporis dignissimos, dolor, earum magnam! Vero sint, sequi obcaecati sunt tempore assumenda, nam nemo quia culpa ad ut quasi deleniti autem accusantium exercitationem adipisci odio.</p>
+
+    <h1>Ejercicio 3</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Encabezado 1</th>
+                <th>Encabezado 2</th>
+                <th>Encabezado 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Repetir el patrón: dos sin pintar y una pintada -->
+            <tr>
+                <td>Fila 1</td>
+                <td>Dato 1</td>
+                <td>Dato 2</td>
+            </tr>
+            <tr>
+                <td>Fila 2</td>
+                <td>Dato 3</td>
+                <td>Dato 4</td>
+            </tr>
+            <tr>
+                <td>Fila 3</td>
+                <td>Dato 5</td>
+                <td>Dato 6</td>
+            </tr>
+            <tr>
+                <td>Fila 4</td>
+                <td>Dato 7</td>
+                <td>Dato 8</td>
+            </tr>
+            <tr>
+                <td>Fila 5</td>
+                <td>Dato 9</td>
+                <td>Dato 10</td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+</body>
+</html>

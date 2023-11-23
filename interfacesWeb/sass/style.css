@@ -1,0 +1,31 @@
+@charset "UTF-8";
+.header {
+  background-color: #bbbbbb;
+}
+
+.btn-error {
+  background-color: #f00;
+}
+
+.container {
+  background-image: url("img/fondos/default.png");
+}
+
+/*
+    Web desarrollada por Aarón
+*/
+a {
+  color: #000;
+  text-decoration: none;
+}
+a:hover {
+  color: pink;
+}
+a:visited {
+  color: #00f;
+}
+a:active {
+  color: #0f0;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+
+    <style>
+        /* Agregar contenido antes y después de cada strong */
+        strong::before {
+            content: "¡"; /* Agregar "¡" al principio del contenido */
+        }
+
+        strong::after {
+            content: "!"; /* Agregar "!" al final del contenido */
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <strong>Texto 1</strong>
+        <strong>Texto 2</strong>
+        <strong>Texto 3</strong>
+    </p>
+</body>
+</html>

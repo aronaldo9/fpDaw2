@@ -1,0 +1,60 @@
+// Declaración de variables
+$grey:#bbbbbb;
+$header-background:$grey;
+$link-normal:#000;
+$link-visited:#00f;
+$link-active:#0f0;
+$link-hover:pink;
+
+// Elementos de la cabecera
+.header {
+    background-color: $header-background;
+}
+
+// Lista en SASS
+//Tamaño para los iconos
+$sizes:(40px,60px,80px);
+
+// Mapa en SASS
+// Breakpoints para la página
+$breakpoints : (
+    "pequeño" : 576px,
+    "medio" : 768px,
+    "grande" : 992px,
+);
+
+// Interpolación en selectores
+$button-type: "error";
+$btn-color: #f00;
+
+.btn-#{$button-type} {
+    background-color: $btn-color;
+}
+
+// Interpolación en uso de funciones
+$fondo: "img/fondos/default.png";
+.container {
+    background-image: url('#{$fondo}');
+}
+
+// Interpolación en comentarios
+$autor: "Aarón";
+
+/*
+    Web desarrollada por #{$autor}
+*/
+
+// Anidamiento básico
+a {
+    color: $link-normal;
+    text-decoration: none;
+    &:hover {
+        color: $link-hover
+    }
+    &:visited {
+        color: $link-visited;
+    }
+    &:active {
+        color: $link-active;
+    }
+}

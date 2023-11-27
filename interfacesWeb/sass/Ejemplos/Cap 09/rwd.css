@@ -1,0 +1,109 @@
+/* Estilos generales */
+body {
+	padding: 0;
+	background-color: gray;
+	font: .8em Verdana, Arial, Helvetica, sans-serif;
+}
+body, h1, h2, p {
+	margin: 0;
+}
+div#contenedor {
+	width: 940px;
+	margin: 20px auto 0 auto;
+	padding: 10px;
+	background-color: white;
+	border-radius: 10px;
+}
+
+/* Encabezado*/
+header#superior {
+	margin: 0 0 10px 0;
+	padding: 5px;
+	background-color: gray;
+	border-radius: 10px;
+}
+header#superior h1, header#superior h2 {
+	color: white;
+}
+
+/* Barra de navegación */
+nav#navegacion {
+	margin: 0 0 10px 0;
+	padding: 5px;
+	background-color: silver;
+	border-radius: 10px;
+}
+nav#navegacion p {
+	color: white;
+}
+nav#navegacion a {
+	text-decoration: none;
+	color: white;
+}
+
+/* Contenido principal */
+section#contenido {
+	float: left;
+	width: 720px;
+	padding: 5px;
+}
+
+article {
+	margin: 0 0 20px 0;
+	border-top: 1px dotted #333;
+}
+
+/* Columna lateral */
+aside#sidebar {
+	float: left;
+	width: 190px;
+	margin: 0 0 0 10px;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: #E8E8E8;
+}
+aside#sidebar p {
+	text-align: center;
+}
+
+/* Pie de página */
+footer#pieDePagina {
+	padding: 5px;
+	border-radius: 5px;
+	background-color: #E8E8E8;
+	clear: both;
+}
+footer#pieDePagina p {
+	text-align: center;
+	font-size: .75em;
+}
+
+/* Media Query para pantallas inferiores a 768 píxeles */
+@media screen and (max-width: 768px) {
+	body {
+		background-color: #fff;
+	}
+	div#contenedor {
+		width: 100%;
+		margin: 0;
+	}
+	header#superior {
+		background-color: #000;
+		color: #fff;
+	}
+	section#contenido {
+		float: none;
+		width: auto;
+	}
+	aside#sidebar {
+		float: none;
+		width: auto;
+		margin: 0 0 10px 0;
+	}
+	aside#sidebar img {
+		display: none;
+	}
+	article h1 {
+		font-size: 1.5em;
+	}
+}
